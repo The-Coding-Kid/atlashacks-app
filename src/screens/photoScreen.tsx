@@ -29,7 +29,6 @@ export default function ImagePickerExample({ navigation }) {
 
 		if (result.cancelled === false) {
 			setImage(result.uri);
-			console.log(image);
 		}
 	};
 
