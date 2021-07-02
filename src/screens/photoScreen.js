@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Image, View, Platform, TouchableOpacity, Text, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
-export default function ImagePickerExample() {
+export default function ImagePickerExample({ navigation }) {
 	const [image, setImage] = useState(null);
 
 	useEffect(() => {
@@ -29,6 +29,10 @@ export default function ImagePickerExample() {
 		if (!result.cancelled) {
 			setImage(result.uri);
 		}
+	};
+
+	const uploadPhoto = () => {
+		navigation.navigate('Details');
 	};
 
 	return (
@@ -59,7 +63,7 @@ export default function ImagePickerExample() {
 					marginTop: 20,
 					width: 300,
 				}}
-				onPress={pickImage}>
+				onPress={uploadPhoto}>
 				<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold', paddingHorizontal: 40 }}>
 					Upload It
 				</Text>
