@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Button, Image, View, Platform, TouchableOpacity, Text, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+var axios = require('axios');
 
 export default function ImagePickerExample({ navigation }) {
-	const [image, setImage] = useState(null);
+	const [image, setImage] = useState<Object | null>(null);
 
 	useEffect(() => {
 		(async () => {
@@ -28,12 +29,27 @@ export default function ImagePickerExample({ navigation }) {
 		console.log(result);
 
 		if (result.cancelled === false) {
-			setImage(result.uri);
+			setImage(result);
 		}
 	};
 
-	const uploadPhoto = () => {
-		
+	const uploadPhoto = async () => {
+		let formData = new FormData();
+		formData.append('image', {
+			//@ts-ignore
+			uri: image.uri,
+			name: 'image.jpg',
+			type: 'image/jpeg',
+		});
+		console.log(formData);
+		try {
+			const response = await axios.post(`http://192.168.86.234:5000/upload-image`, formData, {
+				headers: { 'Content-Type': 'multipart/form-data' },
+			});
+			console.log(response.data);
+		} catch (err) {
+			console.error(err.response.data);
+		}
 		navigation.navigate('Details', {
 			image: image,
 		});
@@ -43,7 +59,8 @@ export default function ImagePickerExample({ navigation }) {
 		<View
 			style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' }}>
 			{image && (
-				<Image source={{ uri: image }} style={{ width: 300, height: 240, borderRadius: 20 }} />
+				//@ts-ignore
+				<Image source={{ uri: image.uri }} style={{ width: 300, height: 240, borderRadius: 20 }} />
 			)}
 			<TouchableOpacity
 				style={{
