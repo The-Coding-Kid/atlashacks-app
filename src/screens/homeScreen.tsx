@@ -15,6 +15,7 @@ interface Image {
 }
 
 export default function homeScreen({ navigation }) {
+	let formData = new FormData();
 	const friends: Image[] = [
 		{ title: 'Image #0' },
 		{ title: 'Image #1' },
