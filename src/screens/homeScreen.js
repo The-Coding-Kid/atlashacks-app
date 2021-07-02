@@ -9,7 +9,7 @@ export default function homeScreen({ navigation }) {
 
 			</View>
 			<TouchableOpacity onPress={() => navigation.navigate('Upload')} style ={styles.Upload}>
-				{/* <Text>Upload Image</Text> */}
+				<Text style={styles.UploadText}>Upload Image</Text>
 			</TouchableOpacity>
 
 		</SafeAreaView>
@@ -33,5 +33,12 @@ const styles = StyleSheet.create({
 		height: 250,
 		backgroundColor: '#3fffa1',
 		borderRadius: 25
+	},
+	UploadText:{
+		alignSelf: 'center',
+		fontSize: 50,
+		fontWeight: 'bold',
+		color: 'white'
+
 	}
 });
