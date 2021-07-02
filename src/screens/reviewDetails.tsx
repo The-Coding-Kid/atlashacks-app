@@ -9,6 +9,8 @@ const reviewDetails = ({navigation}) => {
 		{ type: 'Image #3', image: require('../../assets/food.jpg') },
 	];
 	const [modalVisible, setModalVisible] = useState(false);
+	const [images, setImages] = useState(null)
+
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -22,11 +24,12 @@ const reviewDetails = ({navigation}) => {
         visible={modalVisible}
       >
         <View style={styles.centeredView}>
+			<Image style={styles.imageStyle} source={images}/>
             <TouchableOpacity
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>Back</Text>
             </TouchableOpacity>
         </View>
       </Modal>
@@ -37,7 +40,10 @@ const reviewDetails = ({navigation}) => {
 				renderItem={({ item }) => {
 					// item === {name: 'Friend #1' ...}
 					return (
-						<TouchableOpacity onPress={() => setModalVisible(true)}>
+						<TouchableOpacity onPress={() => {
+							setModalVisible(true);
+							setImages(item.image)
+							}}>
 							{/*@ts-ignore*/}
 							<Image style={styles.imageStyle} source={item.image} />
 						</TouchableOpacity>
@@ -80,7 +86,6 @@ const styles = StyleSheet.create({
 	},
 	centeredView: {
 		flex: 1,
-		justifyContent: "center",
 		alignItems: "center",
 		marginTop: 22
 	  },
@@ -100,7 +105,7 @@ const styles = StyleSheet.create({
 		elevation: 5
 	  },
 	  button: {
-		borderRadius: 20,
+		borderRadius: 15,
 		padding: 10,
 		elevation: 2
 	  },
@@ -113,11 +118,11 @@ const styles = StyleSheet.create({
 	  textStyle: {
 		color: "white",
 		fontWeight: "bold",
-		textAlign: "center"
 	  },
 	  modalText: {
 		marginBottom: 15,
-		textAlign: "center"
+		textAlign: "center",
+		
 	  }
 });
 export default reviewDetails;
