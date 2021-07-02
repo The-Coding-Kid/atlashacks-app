@@ -17,24 +17,11 @@ interface image {
 }
 
 export default function homeScreen({ navigation }) {
-<<<<<<< HEAD
 	let formData = new FormData();
-	const friends: Image[] = [
-		{ title: 'Image #0' },
-		{ title: 'Image #1' },
-		{ title: 'Image #2' },
-		{ title: 'Image #3' },
-		{ title: 'Image #4' },
-		{ title: 'Image #5' },
-		{ title: 'Image #6' },
-		{ title: 'Image #7' },
-		{ title: 'Image #8' },
-=======
 	const friends: image[] = [
-		{ type: 'Image #1', image: require('../../assets/lunch2.jpg')},
-		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg')},
-		{ type: 'Image #3', image: require('../../assets/lunch3.jpeg')},
->>>>>>> dd92bdecb82090eeb9eee324bc61c56f24f03e6c
+		{ type: 'Image #1', image: require('../../assets/lunch2.jpg') },
+		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
+		{ type: 'Image #3', image: require('../../assets/lunch3.jpeg') },
 	];
 	return (
 		<SafeAreaView style={styles.container}>
@@ -57,7 +44,7 @@ export default function homeScreen({ navigation }) {
 							return (
 								<TouchableOpacity onPress={() => navigation.navigate('Details')}>
 									{/*@ts-ignore*/}
-									<Image style={styles.imageStyle} source={item.image}/>
+									<Image style={styles.imageStyle} source={item.image} />
 								</TouchableOpacity>
 							);
 						}}
@@ -79,7 +66,7 @@ const styles = StyleSheet.create({
 		height: 150,
 		backgroundColor: '#a9ffa1',
 		borderRadius: 20,
-		justifyContent: 'center'
+		justifyContent: 'center',
 	},
 	Upload: {
 		marginBottom: 15,
@@ -87,7 +74,7 @@ const styles = StyleSheet.create({
 		height: 250,
 		backgroundColor: '#3fffa1',
 		borderRadius: 25,
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	UploadText: {
 		alignSelf: 'center',
@@ -108,16 +95,16 @@ const styles = StyleSheet.create({
 		borderRadius: 25,
 		alignItems: 'center',
 	},
-	imageStyle:{
+	imageStyle: {
 		height: 240,
 		width: 300,
 		marginTop: 7,
 		marginBottom: 13,
-		borderRadius: 20
+		borderRadius: 20,
 	},
-	imageTitle:{
+	imageTitle: {
 		fontSize: 18,
 		fontWeight: 'bold',
-		color: 'white'
-	}
+		color: 'white',
+	},
 });

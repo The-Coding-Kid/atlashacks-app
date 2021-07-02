@@ -29,7 +29,19 @@ export default function Navigator() {
 						//@ts-ignore
 						return <Ionicons name={iconName} size={size} color={color} />;
 					},
-				})}>
+				})}
+				tabBarOptions={{
+					style: {
+						position: 'absolute',
+						bottom: 25,
+						left: 20,
+						right: 20,
+						elevation: 0,
+						backgroundColor: '#ffffff',
+						borderRadius: 15,
+						height: 90,
+					},
+				}}>
 				<Tab.Screen name="Upload" component={photoScreen} />
 				<Tab.Screen name="Home" component={homeScreen} />
 				<Tab.Screen name="Details" component={reviewDetails} />
