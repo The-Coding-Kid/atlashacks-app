@@ -35,13 +35,15 @@ export default function ImagePickerExample({ navigation }) {
 
 	const uploadPhoto = async () => {
 		let formData = new FormData();
+		//@ts-ignore
+		for (let i = 0; i < image.uri.length - 1; i++) {}
 		formData.append('image', {
 			//@ts-ignore
 			uri: image.uri,
-			name: 'image.jpg',
+			//@ts-ignore
+			name: '',
 			type: 'image/jpeg',
 		});
-		console.log(formData);
 		try {
 			const response = await axios.post(`http://192.168.86.234:5000/upload-image`, formData, {
 				headers: { 'Content-Type': 'multipart/form-data' },
@@ -50,9 +52,7 @@ export default function ImagePickerExample({ navigation }) {
 		} catch (err) {
 			console.error(err.response.data);
 		}
-		navigation.navigate('Past Uploads', {
-			image: image,
-		});
+		navigation.navigate('Past Uploads', image);
 	};
 
 	return (
