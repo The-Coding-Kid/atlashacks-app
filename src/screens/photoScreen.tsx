@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Image, View, Platform, TouchableOpacity, Text, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ImagePickerExample({ navigation }) {
 	const [image, setImage] = useState(null);
@@ -26,13 +27,16 @@ export default function ImagePickerExample({ navigation }) {
 
 		console.log(result);
 
-		if (!result.cancelled) {
+		if (result.cancelled === false) {
 			setImage(result.uri);
+			console.log(image);
 		}
 	};
 
 	const uploadPhoto = () => {
-		navigation.navigate('Details');
+		navigation.navigate('Details', {
+			image: image,
+		});
 	};
 
 	return (
