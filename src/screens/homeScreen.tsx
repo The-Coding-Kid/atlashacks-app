@@ -27,23 +27,30 @@ export default function homeScreen({ navigation }) {
 		{ title: 'Image #8' },
 	];
 	return (
-		<SafeAreaView style={styles.container}>
+		<ScrollView>
+			<SafeAreaView style={styles.container}>
 			<View style={styles.Home}>
 				<Text style={styles.HomeText}> Home</Text>
 			</View>
 			<TouchableOpacity onPress={() => navigation.navigate('Upload')} style={styles.Upload}>
 				<Text style={styles.UploadText}>Upload Image</Text>
 			</TouchableOpacity>
-			<FlatList
-				showsVerticalScrollIndicator={false}
-				keyExtractor={(friend) => friend.title}
-				data={friends}
-				renderItem={({ item }) => {
-					// item === {name: 'Friend #1' ...}
-					return <Text style={styles.textStyle}>{item.title}</Text>;
-				}}
-			/>
+			<View style={styles.reviewStyle}>
+				<FlatList 
+					showsVerticalScrollIndicator={true}
+					keyExtractor={(friend) => friend.title}
+					data={friends}
+					renderItem={({ item }) => {
+						// item === {name: 'Friend #1' ...}
+						return <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+							<Text style={styles.listStyle}>{item.title}</Text>
+						</TouchableOpacity>
+						
+					}}
+				/>
+			</View>
 		</SafeAreaView>
+		</ScrollView>
 	);
 }
 
@@ -77,7 +84,13 @@ const styles = StyleSheet.create({
 		fontSize: 50,
 		color: 'white',
 	},
-	textStyle: {
-		marginVertical: 5,
+	reviewStyle: {
+		margin: 10,
+		backgroundColor: '#86d39f',
+		borderRadius: 20,
+		alignItems: 'center'
 	},
+	listStyle:{
+		color: 'white'
+	}
 });
