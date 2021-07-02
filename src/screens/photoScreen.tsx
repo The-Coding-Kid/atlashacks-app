@@ -50,7 +50,7 @@ export default function ImagePickerExample({ navigation }) {
 		} catch (err) {
 			console.error(err.response.data);
 		}
-		navigation.navigate('Details', {
+		navigation.navigate('Past Uploads', {
 			image: image,
 		});
 	};
