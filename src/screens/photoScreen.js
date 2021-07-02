@@ -64,6 +64,11 @@ export default function ImagePickerExample() {
 					Upload It
 				</Text>
 			</TouchableOpacity>
+			<Image
+				source={{
+					uri: 'https://cdn.discordapp.com/attachments/851271363834544181/860556248913805352/image1.png',
+				}}
+			/>
 		</View>
 	);
 }
