@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image, View, Platform } from 'react-native';
+import { Button, Image, View, Platform, TouchableOpacity, Text } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function ImagePickerExample() {
@@ -33,8 +33,37 @@ export default function ImagePickerExample() {
 
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Button title="Pick an image from camera roll" onPress={pickImage} />
 			{image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+			<TouchableOpacity
+				style={{
+					backgroundColor: '#25ffaa',
+					borderRadius: 10,
+					height: 70,
+					justifyContent: 'center',
+					alignItems: 'center',
+					marginTop: 60,
+					width: 300,
+				}}
+				onPress={pickImage}>
+				<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold', paddingHorizontal: 40 }}>
+					Choose Photo
+				</Text>
+			</TouchableOpacity>
+			<TouchableOpacity
+				style={{
+					backgroundColor: '#6fff7e',
+					borderRadius: 10,
+					height: 70,
+					justifyContent: 'center',
+					alignItems: 'center',
+					marginTop: 20,
+					width: 300,
+				}}
+				onPress={pickImage}>
+				<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold', paddingHorizontal: 40 }}>
+					Upload It
+				</Text>
+			</TouchableOpacity>
 		</View>
 	);
 }
