@@ -23,8 +23,8 @@ export default function Navigator() {
 							iconName = focused ? 'home' : 'home-outline';
 						} else if (route.name === 'Upload') {
 							iconName = focused ? 'cloud-upload' : 'cloud-upload-outline';
-						} else if (route.name === 'Details') {
-							iconName = focused ? 'star' : 'star-outline';
+						} else if (route.name === 'Past Uploads') {
+							iconName = focused ? 'clipboard' : 'clipboard-outline';
 						}
 						//@ts-ignore
 						return <Ionicons name={iconName} size={size} color="white" />;
@@ -39,7 +39,7 @@ export default function Navigator() {
 				}}>
 				<Tab.Screen name="Upload" component={photoScreen} />
 				<Tab.Screen name="Home" component={homeScreen} />
-				<Tab.Screen name="Details" component={reviewDetails} />
+				<Tab.Screen name="Past Uploads" component={reviewDetails} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
