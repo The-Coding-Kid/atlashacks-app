@@ -17,24 +17,10 @@ interface image {
 }
 
 export default function homeScreen({ navigation }) {
-<<<<<<< HEAD
-	let formData = new FormData();
-	const friends: Image[] = [
-		{ title: 'Image #0' },
-		{ title: 'Image #1' },
-		{ title: 'Image #2' },
-		{ title: 'Image #3' },
-		{ title: 'Image #4' },
-		{ title: 'Image #5' },
-		{ title: 'Image #6' },
-		{ title: 'Image #7' },
-		{ title: 'Image #8' },
-=======
 	const friends: image[] = [
 		{ type: 'Image #1', image: require('../../assets/lunch2.jpg')},
 		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg')},
 		{ type: 'Image #3', image: require('../../assets/lunch3.jpeg')},
->>>>>>> dd92bdecb82090eeb9eee324bc61c56f24f03e6c
 	];
 	return (
 		<SafeAreaView style={styles.container}>
@@ -47,7 +33,7 @@ export default function homeScreen({ navigation }) {
 					<Text style={styles.UploadText}>Photo</Text>
 				</TouchableOpacity>
 				<View style={styles.reviewStyle}>
-					<Text style={styles.imageTitle}>Past Uploads</Text>
+					<Text style={styles.imageTitle}>Past Photos</Text>
 					<FlatList
 						showsVerticalScrollIndicator={true}
 						keyExtractor={(friend) => friend.type}
