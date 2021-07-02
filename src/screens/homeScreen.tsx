@@ -26,7 +26,7 @@ export default function homeScreen({ navigation }) {
 			</TouchableOpacity>
 			<FlatList
 				showsVerticalScrollIndicator={false}
-				keyExtractor={(friend) => friend.name} 
+				keyExtractor={(friend) => friend.title}
 				data={friends} 
 				renderItem={({ item }) => {
           // item === {name: 'Friend #1' ...}
