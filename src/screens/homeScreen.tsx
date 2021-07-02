@@ -17,7 +17,6 @@ interface image {
 }
 
 export default function homeScreen({ navigation }) {
-	let formData = new FormData();
 	const friends: image[] = [
 		{ type: 'Image #1', image: require('../../assets/lunch2.jpg') },
 		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
@@ -34,7 +33,7 @@ export default function homeScreen({ navigation }) {
 					<Text style={styles.UploadText}>Photo</Text>
 				</TouchableOpacity>
 				<View style={styles.reviewStyle}>
-					<Text style={styles.imageTitle}>Past Uploads</Text>
+					<Text style={styles.imageTitle}>Past Photos</Text>
 					<FlatList
 						showsVerticalScrollIndicator={true}
 						keyExtractor={(friend) => friend.type}
