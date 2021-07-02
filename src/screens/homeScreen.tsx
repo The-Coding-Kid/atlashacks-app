@@ -20,7 +20,7 @@ export default function homeScreen({ navigation }) {
 	const friends: image[] = [
 		{ type: 'Image #1', image: require('../../assets/lunch2.jpg') },
 		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
-		{ type: 'Image #3', image: require('../../assets/lunch3.jpeg') },
+		{ type: 'Image #r', image: require('../../assets/lunch3.jpeg') },
 		{ type: 'Image #3', image: require('../../assets/food.jpg') },
 	];
 	return (
@@ -107,4 +107,5 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		color: 'white',
 	},
+	
 });

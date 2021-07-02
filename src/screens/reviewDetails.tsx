@@ -1,35 +1,52 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, SafeAreaView, Modal } from 'react-native';
 
 const reviewDetails = ({navigation}) => {
 	const friends = [
 		{ type: 'Image #1', image: require('../../assets/lunch2.jpg') },
 		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
-		{ type: 'Image #3', image: require('../../assets/lunch3.jpeg') },
+		{ type: 'Image #4', image: require('../../assets/lunch3.jpeg') },
 		{ type: 'Image #3', image: require('../../assets/food.jpg') },
 	];
+	const [modalVisible, setModalVisible] = useState(false);
 
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.reviewStyle}>
 				<Text style={styles.imageTitle}>Past Photos</Text>
 			</View>
-					<FlatList
-						showsVerticalScrollIndicator={true}
-						keyExtractor={(friend) => friend.type}
-						data={friends}
-						renderItem={({ item }) => {
-							// item === {name: 'Friend #1' ...}
-							return (
-								<TouchableOpacity onPress={() => navigation.navigate('Details')}>
-									{/*@ts-ignore*/}
-									<Image style={styles.imageStyle} source={item.image} />
-								</TouchableOpacity>
-							);
-						}}
-					/>
+			<View style={styles.centeredView}>
+      <Modal
+        animationType="slide"
+        transparent={false}
+        visible={modalVisible}
+      >
+        <View style={styles.centeredView}>
+            <TouchableOpacity
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Hide Modal</Text>
+            </TouchableOpacity>
+        </View>
+      </Modal>
+        <FlatList
+			showsVerticalScrollIndicator={true}
+				keyExtractor={(friend) => friend.type}
+				data={friends}
+				renderItem={({ item }) => {
+					// item === {name: 'Friend #1' ...}
+					return (
+						<TouchableOpacity onPress={() => setModalVisible(true)}>
+							{/*@ts-ignore*/}
+							<Image style={styles.imageStyle} source={item.image} />
+						</TouchableOpacity>
+					);
+				}}
+			/>
+    </View>
 	</SafeAreaView>
-	);
+  );
 };
 
 const styles = StyleSheet.create({
@@ -60,6 +77,47 @@ const styles = StyleSheet.create({
 		backgroundColor: '#97fed5',
 		borderRadius: 20,
 		alignItems: 'center'
-	}
+	},
+	centeredView: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+		marginTop: 22
+	  },
+	  modalView: {
+		margin: 20,
+		backgroundColor: "white",
+		borderRadius: 20,
+		padding: 35,
+		alignItems: "center",
+		shadowColor: "#000",
+		shadowOffset: {
+		  width: 0,
+		  height: 2
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 4,
+		elevation: 5
+	  },
+	  button: {
+		borderRadius: 20,
+		padding: 10,
+		elevation: 2
+	  },
+	  buttonOpen: {
+		backgroundColor: "#F194FF",
+	  },
+	  buttonClose: {
+		backgroundColor: "#2196F3",
+	  },
+	  textStyle: {
+		color: "white",
+		fontWeight: "bold",
+		textAlign: "center"
+	  },
+	  modalText: {
+		marginBottom: 15,
+		textAlign: "center"
+	  }
 });
 export default reviewDetails;
