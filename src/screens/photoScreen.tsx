@@ -33,6 +33,7 @@ export default function ImagePickerExample({ navigation }) {
 	};
 
 	const uploadPhoto = () => {
+		
 		navigation.navigate('Details', {
 			image: image,
 		});
