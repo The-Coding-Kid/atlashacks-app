@@ -8,6 +8,9 @@ export default function homeScreen() {
 			<View style={styles.Home}>
 
 			</View>
+			<View>
+				
+			</View>
 		</View>
 	);
 }
@@ -18,9 +21,9 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 	},
 	Home:{
-		marginTop: 20,
+		marginTop: 30,
 		margin: 15,
-		height: 100,
+		height: 150,
 		backgroundColor: '#a9ffa1',
 		borderRadius: 20
 	}
