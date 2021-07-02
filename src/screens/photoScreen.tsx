@@ -39,11 +39,14 @@ export default function ImagePickerExample({ navigation }) {
 	};
 
 	return (
-		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' }}>
-			{image && <Image source={{ uri: image }} style={{ width: 300, height: 240, borderRadius: 20 }} />}
+		<View
+			style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' }}>
+			{image && (
+				<Image source={{ uri: image }} style={{ width: 300, height: 240, borderRadius: 20 }} />
+			)}
 			<TouchableOpacity
 				style={{
-					backgroundColor: '#25ffaa',
+					backgroundColor: '#4ee3ff',
 					borderRadius: 10,
 					height: 70,
 					justifyContent: 'center',
@@ -58,7 +61,7 @@ export default function ImagePickerExample({ navigation }) {
 			</TouchableOpacity>
 			<TouchableOpacity
 				style={{
-					backgroundColor: '#6fff7e',
+					backgroundColor: '#60f4dc',
 					borderRadius: 10,
 					height: 70,
 					justifyContent: 'center',
