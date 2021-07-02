@@ -8,23 +8,19 @@ import {
 	TouchableOpacity,
 	FlatList,
 	ScrollView,
+	Image,
 } from 'react-native';
 
-interface Image {
-	title: string;
+interface image {
+	type: string;
+	image: string;
 }
 
 export default function homeScreen({ navigation }) {
-	const friends: Image[] = [
-		{ title: 'Image #0' },
-		{ title: 'Image #1' },
-		{ title: 'Image #2' },
-		{ title: 'Image #3' },
-		{ title: 'Image #4' },
-		{ title: 'Image #5' },
-		{ title: 'Image #6' },
-		{ title: 'Image #7' },
-		{ title: 'Image #8' },
+	const friends: image[] = [
+		{ type: 'Image #1', image: require('../../assets/lunch2.jpg')},
+		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg')},
+		{ type: 'Image #3', image: require('../../assets/lunch3.jpeg')},
 	];
 	return (
 		<SafeAreaView style={styles.container}>
@@ -33,18 +29,20 @@ export default function homeScreen({ navigation }) {
 					<Text style={styles.HomeText}> Home</Text>
 				</View>
 				<TouchableOpacity onPress={() => navigation.navigate('Upload')} style={styles.Upload}>
-					<Text style={styles.UploadText}>Upload Image</Text>
+					<Text style={styles.UploadText}>Upload</Text>
+					<Text style={styles.UploadText}>Photo</Text>
 				</TouchableOpacity>
 				<View style={styles.reviewStyle}>
+					<Text style={styles.imageTitle}>Past Uploads</Text>
 					<FlatList
 						showsVerticalScrollIndicator={true}
-						keyExtractor={(friend) => friend.title}
+						keyExtractor={(friend) => friend.type}
 						data={friends}
 						renderItem={({ item }) => {
 							// item === {name: 'Friend #1' ...}
 							return (
 								<TouchableOpacity onPress={() => navigation.navigate('Details')}>
-									<Text style={styles.listStyle}>{item.title}</Text>
+									<Image style={styles.imageStyle} source={item.image}/>
 								</TouchableOpacity>
 							);
 						}}
@@ -61,17 +59,20 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 	},
 	Home: {
-		marginTop: 25,
+		marginTop: 30,
 		margin: 15,
 		height: 150,
 		backgroundColor: '#a9ffa1',
 		borderRadius: 20,
+		justifyContent: 'center'
 	},
 	Upload: {
-		margin: 15,
+		marginBottom: 15,
+		marginHorizontal: 15,
 		height: 250,
 		backgroundColor: '#3fffa1',
 		borderRadius: 25,
+		alignItems: 'center'
 	},
 	UploadText: {
 		alignSelf: 'center',
@@ -86,12 +87,22 @@ const styles = StyleSheet.create({
 		color: 'white',
 	},
 	reviewStyle: {
-		margin: 10,
+		marginBottom: 15,
+		marginHorizontal: 15,
 		backgroundColor: '#86d39f',
-		borderRadius: 20,
+		borderRadius: 25,
 		alignItems: 'center',
 	},
-	listStyle: {
-		color: 'white',
+	imageStyle:{
+		height: 240,
+		width: 300,
+		marginTop: 7,
+		marginBottom: 13,
+		borderRadius: 20
 	},
+	imageTitle:{
+		fontSize: 18,
+		fontWeight: 'bold',
+		color: 'white'
+	}
 });

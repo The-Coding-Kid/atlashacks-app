@@ -39,8 +39,8 @@ export default function ImagePickerExample({ navigation }) {
 	};
 
 	return (
-		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			{image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' }}>
+			{image && <Image source={{ uri: image }} style={{ width: 300, height: 240, borderRadius: 20 }} />}
 			<TouchableOpacity
 				style={{
 					backgroundColor: '#25ffaa',
