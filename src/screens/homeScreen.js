@@ -1,10 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 
 export default function homeScreen({ navigation }) {
 
-	const Images = []
+	const friends =[
+		{ title: 'Image #0'},
+		{ title: 'Image #1'},
+		{ title: 'Image #2'},
+		{ title: 'Image #3'},
+		{ title: 'Image #4'},
+		{ title: 'Image #5'},
+		{ title: 'Image #6'},
+		{ title: 'Image #7'},
+		{ title: 'Image #8'},
+		  
+	  ]  
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.Home}>
@@ -13,12 +24,19 @@ export default function homeScreen({ navigation }) {
 			<TouchableOpacity onPress={() => navigation.navigate('Upload')} style ={styles.Upload}>
 				<Text style={styles.UploadText}>Upload Image</Text>
 			</TouchableOpacity>
-			<TouchableOpacity>
-				<FlatList 
-					data={Images}
-					
-				/>
-			</TouchableOpacity>
+			<FlatList
+				showsVerticalScrollIndicator={false}
+				keyExtractor={(friend) => friend.name} 
+				data={friends} 
+				renderItem={({ item }) => {
+          // item === {name: 'Friend #1' ...}
+          return (
+            <Text style={styles.textStyle}>
+              {item.title}
+            </Text>
+          )
+      }}
+    />
 		</SafeAreaView>
 	);
 }
@@ -53,5 +71,8 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		fontSize: 50,
 		color: 'white'
+	},
+	textStyle:{
+		marginVertical: 5
 	}
 });
