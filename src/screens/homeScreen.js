@@ -5,8 +5,9 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function homeScreen() {
 	return (
 		<View style={styles.container}>
-			<Text>Home Screen!</Text>
-			<StatusBar style="auto" />
+			<View style={styles.Home}>
+
+			</View>
 		</View>
 	);
 }
@@ -15,7 +16,12 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
 	},
+	Home:{
+		marginTop: 20,
+		margin: 15,
+		height: 100,
+		backgroundColor: '#a9ffa1',
+		borderRadius: 20
+	}
 });
