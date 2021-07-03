@@ -21,9 +21,9 @@ export default function homeScreen({ navigation }) {
 	  { name: 'Image #4', image: require('../../assets/food.jpg') }]
 	return (
 		<SafeAreaView style={styles.container}>
-			<Image style={styles.carrot} source={require('../../assets/carrot3.png')}/>
+			{/* <Image style={styles.carrot} source={require('../../assets/carrot3.png')}/>
 			<Image style={styles.tomatoe} source={require('../../assets/tomato.png')}/>
-			<Image style={styles.camera} source={require('../../assets/camera.png')}/>
+			<Image style={styles.camera} source={require('../../assets/camera.png')}/> */}
 
 			<ScrollView>
 				<View style={styles.Home}>

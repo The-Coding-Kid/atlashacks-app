@@ -14,8 +14,8 @@ const reviewDetails = ({ navigation }) => {
 	const friends = [  
 		{ type: 'Image #1', image: require('../../assets/lunch2.jpg') },
 		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
-	  	{ type: 'Image #3', image: require('../../assets/lunch3.jpeg') },
-	  	{ type: 'Image #4', image: require('../../assets/food.jpg') }]
+	  { type: 'Image #3', image: require('../../assets/lunch3.jpeg') },
+	  { type: 'Image #4', image: require('../../assets/food.jpg') }]
 	const [modalVisible, setModalVisible] = useState(false);
 	const [images, setImages] = useState(null);
 
@@ -127,4 +127,6 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 	},
 });
+
+
 export default reviewDetails;
