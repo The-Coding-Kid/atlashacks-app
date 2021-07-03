@@ -31,7 +31,9 @@ const reviewDetails = ({ navigation }) => {
 						<Image style={styles.imageStyle} source={images} />
 						<TouchableOpacity
 							style={[styles.button, styles.buttonClose]}
-							onPress={() => setModalVisible(!modalVisible)}>
+							onPress={() => {
+								setModalVisible(!modalVisible);
+							}}>
 							<Text style={styles.textStyle}>Back</Text>
 						</TouchableOpacity>
 					</View>
@@ -47,6 +49,7 @@ const reviewDetails = ({ navigation }) => {
 								onPress={() => {
 									setModalVisible(true);
 									setImages(item.image);
+									
 								}}>
 								{/*@ts-ignore*/}
 								<Image style={styles.imageStyle} source={item.image} />
