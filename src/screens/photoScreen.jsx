@@ -184,7 +184,54 @@ export default function ImagePickerExample({ navigation }) {
 					<Modal animationType="slide" transparent={false} visible={modalVisible2}>
 						<View style={styles.centeredView}>
 							<Image style={styles.imageStyle} source={{ uri: uri }} />
-							<Text>Stars: {stars}</Text>
+							{stars === 2 ? (
+								<View style={{ flexDirection: 'row' }}>
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+								</View>
+							) : stars === 3 ? (
+								<View style={{ flexDirection: 'row' }}>
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+								</View>
+							) : stars === 4 ? (
+								<View style={{ flexDirection: 'row' }}>
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+								</View>
+							) : stars === 5 ? (
+								<View style={{ flexDirection: 'row' }}>
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+								</View>
+							) : stars === 2.5 ? (
+								<View style={{ flexDirection: 'row' }}>
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star-half" size={30} color="#ffd944" />
+								</View>
+							) : stars === 3.5 ? (
+								<View style={{ flexDirection: 'row' }}>
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star-half" size={30} color="#ffd944" />
+								</View>
+							) : stars === 4.5 ? (
+								<View style={{ flexDirection: 'row' }}>
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star-half" size={30} color="#ffd944" />
+								</View>
+							) : null}
 							<TouchableOpacity
 								style={[styles.button2, styles.buttonClose]}
 								onPress={() => {
