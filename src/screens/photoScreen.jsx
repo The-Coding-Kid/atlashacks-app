@@ -28,8 +28,6 @@ export default function ImagePickerExample({ navigation }) {
 
 	useEffect(() => {
 		(async () => {
-			await Camera.getSupportedRatiosAsync();
-			const { status } = await Camera.requestPermissionsAsync();
 			setHasPermission(status === 'granted');
 			if (Platform.OS !== 'web') {
 				const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
