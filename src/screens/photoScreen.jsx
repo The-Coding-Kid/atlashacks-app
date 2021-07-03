@@ -184,6 +184,9 @@ export default function ImagePickerExample({ navigation }) {
 					<Modal animationType="slide" transparent={false} visible={modalVisible2}>
 						<View style={styles.centeredView}>
 							<Image style={styles.imageStyle} source={{ uri: uri }} />
+							<View style={{ marginTop: 40, marginBottom: 30 }}>
+								<Text style={{ fontSize: 30, fontWeight: 'bold' }}>Overall Rating: {stars}</Text>
+							</View>
 							{stars === 2 ? (
 								<View style={{ flexDirection: 'row' }}>
 									<Ionicons name="star" size={30} color="#ffd944" />
@@ -237,7 +240,7 @@ export default function ImagePickerExample({ navigation }) {
 								onPress={() => {
 									setModalVisible2(!modalVisible2);
 								}}>
-								<Text style={styles.textStyle}>Back</Text>
+								<Text style={styles.textStyle}>Done</Text>
 							</TouchableOpacity>
 						</View>
 					</Modal>
