@@ -17,8 +17,8 @@ export default function homeScreen({ navigation }) {
 	const friends = [
 		{ name: 'Image #1', image: require('../../assets/lunch2.jpg') },
 		{ name: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
-	  	{ name: 'Image #3', image: require('../../assets/lunch3.jpeg') },
-	  	{ name: 'Image #4', image: require('../../assets/food.jpg') }]
+	  { name: 'Image #3', image: require('../../assets/lunch3.jpeg') },
+	  { name: 'Image #4', image: require('../../assets/food.jpg') }]
 	return (
 		<SafeAreaView style={styles.container}>
 			<Image style={styles.carrot} source={require('../../assets/carrot3.png')}/>
