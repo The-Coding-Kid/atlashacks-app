@@ -21,13 +21,13 @@ var axios = require('axios');
 export default function ImagePickerExample({ navigation }) {
 	const [image, setImage] = useState('bob');
 	const [modalVisible, setModalVisible] = useState(false);
-	const [images, setImages] = useState(null)
+	const [images, setImages] = useState(null);
 	const [hasPermission, setHasPermission] = useState(null);
 	const [type, setType] = useState(Camera.Constants.Type.back);
 	const [cameraRef, setCameraRef] = useState(null);
 	const [data, setData] = useState(null);
-	const [modalVisible2, setModalVisible2] = useState(false)
-	const [uri, setUri]  = useState(null)
+	const [modalVisible2, setModalVisible2] = useState(false);
+	const [uri, setUri] = useState(null);
 
 	useEffect(() => {
 		(async () => {
@@ -68,7 +68,7 @@ export default function ImagePickerExample({ navigation }) {
 		let formData = new FormData();
 		//@ts-ignore
 		let string = image.uri;
-		setUri(image.uri)
+		setUri(image.uri);
 		//@ts-ignore
 		let file_name = ' ';
 		console.log('Data: ', image);
@@ -112,7 +112,7 @@ export default function ImagePickerExample({ navigation }) {
 					<Image
 						//@ts-ignore
 						source={{ uri: image.uri }}
-						style={{ width: 350, height: 400, borderRadius: 20, alignSelf: 'center' }}
+						style={{ width: 320, height: 400, borderRadius: 20, alignSelf: 'center' }}
 					/>
 				)}
 				<TouchableOpacity
@@ -174,13 +174,13 @@ export default function ImagePickerExample({ navigation }) {
 									setModalVisible(!modalVisible);
 								}
 							}}>
-							<Ionicons name="ellipse-outline" color="white" size={75} style={{elevation: 999}}/>
+							<Ionicons name="ellipse-outline" color="white" size={75} style={{ elevation: 999 }} />
 						</TouchableOpacity>
 					</Modal>
 
 					<Modal animationType="slide" transparent={false} visible={modalVisible2}>
 						<View style={styles.centeredView}>
-							<Image style={styles.imageStyle} source={{uri: uri}} />
+							<Image style={styles.imageStyle} source={{ uri: uri }} />
 							<TouchableOpacity
 								style={[styles.button2, styles.buttonClose]}
 								onPress={() => {
@@ -189,11 +189,11 @@ export default function ImagePickerExample({ navigation }) {
 								<Text style={styles.textStyle}>Back</Text>
 							</TouchableOpacity>
 						</View>
-				</Modal>		
+					</Modal>
 					<TouchableOpacity
 						style={styles.takePhoto}
 						onPress={() => {
-							setModalVisible2(true);
+							setModalVisible(true);
 						}}>
 						<Text style={styles.buttonText}>Take a photo</Text>
 					</TouchableOpacity>
