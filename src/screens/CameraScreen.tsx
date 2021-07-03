@@ -145,8 +145,8 @@ const styles = StyleSheet.create({
 	takePhoto: {
 		backgroundColor: '#3d3add',
 		height: 70,
-		width: 300,
 		borderRadius: 10,
+		paddingHorizontal: 46,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
