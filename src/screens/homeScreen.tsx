@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import {
 	StyleSheet,
 	Text,
