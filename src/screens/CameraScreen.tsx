@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
@@ -7,11 +7,14 @@ export default function App() {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [hasPermission, setHasPermission] = useState(null);
 	const [type, setType] = useState(Camera.Constants.Type.back);
+	const [cameraRef, setCameraRef] = useState(null);
+	const [data, setData] = useState<Object | null>(null);
 
 	useEffect(() => {
 		(async () => {
 			const { status } = await Camera.requestPermissionsAsync();
 			setHasPermission(status === 'granted');
+			setData(null);
 		})();
 	}, []);
 
@@ -21,11 +24,18 @@ export default function App() {
 	if (hasPermission === false) {
 		return <Text>No access to camera</Text>;
 	}
+
 	return (
 		<View style={styles.centeredView}>
 			<Modal animationType="slide" transparent={false} visible={modalVisible}>
 				<View style={styles.container}>
-					<Camera style={styles.camera} type={type}>
+					<Camera
+						style={styles.camera}
+						type={type}
+						ref={(ref) => {
+							setCameraRef(ref);
+						}}
+						ratio="5:4">
 						<View style={styles.buttonContainer}>
 							<TouchableOpacity
 								style={styles.flipButton}
@@ -55,6 +65,14 @@ export default function App() {
 					color="white"
 					size={75}
 					style={{ position: 'absolute', marginTop: 700, marginLeft: 150 }}
+					onPress={async () => {
+						if (cameraRef) {
+							let photo = await cameraRef.takePictureAsync();
+							console.log('photo', photo);
+							setData(photo);
+							console.log('Data: ', data);
+						}
+					}}
 				/>
 			</Modal>
 

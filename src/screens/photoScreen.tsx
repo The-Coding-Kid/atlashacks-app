@@ -15,7 +15,7 @@ import App from './CameraScreen';
 var axios = require('axios');
 
 export default function ImagePickerExample({ navigation }) {
-	const [image, setImage] = useState<Object | null>(null);
+	const [image, setImage] = useState<Object | null | string>('bob');
 
 	useEffect(() => {
 		(async () => {
