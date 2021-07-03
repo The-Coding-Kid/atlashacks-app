@@ -12,10 +12,10 @@ import {
 
 const reviewDetails = ({ navigation }) => {
 	const friends = [  
-		{ name: 'Image #1', images: require('../../assets/lunch2.jpg') },
-		{ name: 'Image #2', images: require('../../assets/school_lunch_tray.jpg') },
-	  	{ name: 'Image #3', images: require('../../assets/lunch3.jpeg') },
-	  	{ name: 'Image #4', images: require('../../assets/food.jpg') }]
+		{ type: 'Image #1', image: require('../../assets/lunch2.jpg') },
+		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
+	  	{ type: 'Image #3', image: require('../../assets/lunch3.jpeg') },
+	  	{ type: 'Image #4', image: require('../../assets/food.jpg') }]
 	const [modalVisible, setModalVisible] = useState(false);
 	const [images, setImages] = useState(null);
 
