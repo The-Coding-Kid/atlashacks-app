@@ -41,7 +41,7 @@ export default function ImagePickerExample({ navigation }) {
 			//@ts-ignore
 			uri: image.uri,
 			//@ts-ignore
-			name: '',
+			name: 'image',
 			type: 'image/jpeg',
 		});
 		try {
