@@ -102,7 +102,7 @@ export default function ImagePickerExample({ navigation }) {
 				<Image
 					//@ts-ignore
 					source={{ uri: image.uri }}
-					style={{ width: 300, height: 240, borderRadius: 20, alignSelf: 'center' }}
+					style={{ width: 350, height: 400, borderRadius: 20, alignSelf: 'center' }}
 				/>
 			)}
 			<TouchableOpacity
@@ -162,6 +162,7 @@ export default function ImagePickerExample({ navigation }) {
 								let photo = await cameraRef.takePictureAsync();
 								console.log('photo', photo);
 								setImage(photo);
+								setModalVisible(!modalVisible);
 							}
 						}}>
 						<Ionicons name="ellipse-outline" color="white" size={75} />
