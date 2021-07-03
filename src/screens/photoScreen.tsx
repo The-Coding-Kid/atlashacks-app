@@ -80,8 +80,8 @@ export default function ImagePickerExample({ navigation }) {
 	return (
 		<SafeAreaView style={{ flexDirection: 'column' }}>
 			{image && (
-				//@ts-ignore
 				<Image
+					//@ts-ignore
 					source={{ uri: image.uri }}
 					style={{ width: 300, height: 240, borderRadius: 20, alignSelf: 'center' }}
 				/>

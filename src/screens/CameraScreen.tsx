@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
 import { Camera } from 'expo-camera';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function App() {
 	const [modalVisible, setModalVisible] = useState(false);
@@ -49,6 +50,12 @@ export default function App() {
 						<Text style={styles.textStyle}>Back</Text>
 					</View>
 				</TouchableOpacity>
+				<Ionicons
+					name="ellipse-outline"
+					color="white"
+					size={75}
+					style={{ position: 'absolute', marginTop: 700, marginLeft: 150 }}
+				/>
 			</Modal>
 
 			<TouchableOpacity
