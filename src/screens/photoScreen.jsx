@@ -98,7 +98,10 @@ export default function ImagePickerExample({ navigation }) {
 
 	return (
 		<SafeAreaView style={{ flexDirection: 'column' }}>
-			<ScrollView>
+			<ScrollView
+				style={{ marginBottom: 30 }}
+				showsVerticalScrollIndicator={false}
+				showsHorizontalScrollIndicator={false}>
 				{image && (
 					<Image
 						//@ts-ignore
@@ -186,7 +189,7 @@ export default function ImagePickerExample({ navigation }) {
 						borderRadius: 10,
 						height: 70,
 						marginHorizontal: 36,
-						marginTop: 100,
+						marginTop: 35,
 					}}
 					onPress={uploadPhoto}>
 					<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Upload It</Text>
