@@ -20,50 +20,47 @@ export default function App() {
 	if (hasPermission === false) {
 		return <Text>No access to camera</Text>;
 	}
-	return<View style={styles.centeredView}>
-				<Modal animationType="slide" transparent={false} visible={modalVisible}>
+	return (
+		<View style={styles.centeredView}>
+			<Modal animationType="slide" transparent={false} visible={modalVisible}>
 				<View style={styles.container}>
-			<Camera style={styles.camera} type={type}>
-				<View style={styles.buttonContainer}>
-					<TouchableOpacity
-						style={styles.flipButton}
-						onPress={() => {
-							setType(
-								type === Camera.Constants.Type.back
-									? Camera.Constants.Type.front
-									: Camera.Constants.Type.back
-							);
-						}}>
-						<Text style={styles.text}> Flip </Text>
-					</TouchableOpacity>
+					<Camera style={styles.camera} type={type}>
+						<View style={styles.buttonContainer}>
+							<TouchableOpacity
+								style={styles.flipButton}
+								onPress={() => {
+									setType(
+										type === Camera.Constants.Type.back
+											? Camera.Constants.Type.front
+											: Camera.Constants.Type.back
+									);
+								}}>
+								<Text style={styles.text}> Flip </Text>
+							</TouchableOpacity>
+						</View>
+					</Camera>
 				</View>
-			</Camera>
-		</View>
-						<TouchableOpacity
-							style={[styles.button, styles.buttonClose]}
-							onPress={() => {
-								setModalVisible(!modalVisible);
-							}}>
-							<View style={styles.backButton}>
-								<Text style={styles.textStyle}>Back</Text>
-							</View>
-						</TouchableOpacity>
-				</Modal>
-				
-					<TouchableOpacity
-						style={styles.takePhoto}
-						onPress={() => {
-							setModalVisible(true)
-							}}>
-						<Text style={styles.buttonText}>Take a photo</Text>
-							
-					</TouchableOpacity>
-						
-					
-				
-	</View>}
-	
+				<TouchableOpacity
+					style={[styles.button, styles.buttonClose]}
+					onPress={() => {
+						setModalVisible(!modalVisible);
+					}}>
+					<View style={styles.backButton}>
+						<Text style={styles.textStyle}>Back</Text>
+					</View>
+				</TouchableOpacity>
+			</Modal>
 
+			<TouchableOpacity
+				style={styles.takePhoto}
+				onPress={() => {
+					setModalVisible(true);
+				}}>
+				<Text style={styles.buttonText}>Take a photo</Text>
+			</TouchableOpacity>
+		</View>
+	);
+}
 
 const styles = StyleSheet.create({
 	container: {
@@ -79,7 +76,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		color: 'white',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
 	},
 	imageStyle: {
 		width: 330,
@@ -122,7 +119,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginTop: 35,
 		marginLeft: 250,
-		position: 'absolute'
+		position: 'absolute',
 	},
 	buttonOpen: {
 		backgroundColor: '#F194FF',
@@ -138,29 +135,30 @@ const styles = StyleSheet.create({
 		color: 'white',
 		textAlign: 'center',
 	},
-	takePhoto:{
-		backgroundColor: 'blue',
+	takePhoto: {
+		backgroundColor: '#3d3add',
 		height: 70,
 		width: 300,
-		borderRadius: 25
+		borderRadius: 10,
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
-	backButton:{
+	backButton: {
 		width: 100,
-		alignItems: 'center'
+		alignItems: 'center',
 	},
-	flipButton:{
+	flipButton: {
 		position: 'absolute',
 		backgroundColor: '#2196F3',
 		borderRadius: 15,
 		paddingHorizontal: 40,
 		paddingVertical: 10,
-		marginTop: 30,
-		marginLeft: 0
-
+		marginTop: 35,
+		marginLeft: 0,
 	},
-	buttonText:{
+	buttonText: {
 		fontWeight: 'bold',
-		alignSelf: 'center'
-	}
+		color: 'white',
+		fontSize: 30,
+	},
 });
-

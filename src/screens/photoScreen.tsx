@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image, View, Platform, TouchableOpacity, Text, ScrollView } from 'react-native';
+import {
+	Button,
+	Image,
+	View,
+	Platform,
+	TouchableOpacity,
+	Text,
+	ScrollView,
+	SafeAreaView,
+} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import App from './CameraScreen';
@@ -69,44 +78,43 @@ export default function ImagePickerExample({ navigation }) {
 	};
 
 	return (
-		<View
-			style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' }}>
+		<SafeAreaView style={{ flexDirection: 'column' }}>
 			{image && (
 				//@ts-ignore
-				<Image source={{ uri: image.uri }} style={{ width: 300, height: 240, borderRadius: 20 }} />
+				<Image
+					source={{ uri: image.uri }}
+					style={{ width: 300, height: 240, borderRadius: 20, alignSelf: 'center' }}
+				/>
 			)}
 			<TouchableOpacity
 				style={{
-					backgroundColor: '#4ee3ff',
-					borderRadius: 10,
-					height: 70,
 					justifyContent: 'center',
 					alignItems: 'center',
-					marginTop: 60,
-					width: 300,
+					borderRadius: 10,
+					height: 70,
+					marginHorizontal: 36,
+					marginTop: 30,
+					backgroundColor: '#58daff',
+					marginBottom: 10,
 				}}
 				onPress={pickImage}>
-				<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold', paddingHorizontal: 40 }}>
-					Choose Photo
-				</Text>
+				<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Choose Photo</Text>
 			</TouchableOpacity>
 			<App />
 			<TouchableOpacity
 				style={{
-					backgroundColor: '#60f4dc',
-					borderRadius: 10,
-					height: 70,
 					justifyContent: 'center',
 					alignItems: 'center',
-					marginTop: 10,
-					width: 300,
+					backgroundColor: '#001aff',
+					borderRadius: 10,
+					height: 70,
+					marginHorizontal: 36,
+					marginTop: 100,
 				}}
 				onPress={uploadPhoto}>
-				<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold', paddingHorizontal: 40 }}>
-					Upload It
-				</Text>
+				<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Upload It</Text>
 			</TouchableOpacity>
 			{/* <Image source={require('../../assets/carrot2.png')} /> */}
-		</View>
+		</SafeAreaView>
 	);
 }
