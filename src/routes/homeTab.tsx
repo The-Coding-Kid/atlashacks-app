@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import homeScreen from '../screens/homeScreen';
 import photoScreen from '../screens/photoScreen';
 import reviewDetails from '../screens/reviewDetails';
+import CameraScreen from '../screens/CameraScreen';
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
@@ -25,6 +26,8 @@ export default function Navigator() {
 							iconName = focused ? 'cloud-upload' : 'cloud-upload-outline';
 						} else if (route.name === 'Past Uploads') {
 							iconName = focused ? 'clipboard' : 'clipboard-outline';
+						} else if (route.name === 'Camera') {
+							iconName = focused ? 'camera' : 'camera-outline';
 						}
 						//@ts-ignore
 						return <Ionicons name={iconName} size={size} color="white" />;
@@ -40,6 +43,7 @@ export default function Navigator() {
 				<Tab.Screen name="Upload" component={photoScreen} />
 				<Tab.Screen name="Home" component={homeScreen} />
 				<Tab.Screen name="Past Uploads" component={reviewDetails} />
+				<Tab.Screen name="Camera" component={CameraScreen} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
