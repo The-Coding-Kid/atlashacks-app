@@ -119,7 +119,6 @@ export default function ImagePickerExample({ navigation }) {
 				onPress={pickImage}>
 				<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Choose Photo</Text>
 			</TouchableOpacity>
-			<App />
 
 			<View style={styles.centeredView}>
 				<Modal animationType="slide" transparent={false} visible={modalVisible}>
