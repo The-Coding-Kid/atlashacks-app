@@ -21,6 +21,9 @@ export default function homeScreen({ navigation }) {
 	  	{ name: 'Image #4', image: require('../../assets/food.jpg') }]
 	return (
 		<SafeAreaView style={styles.container}>
+			<Image style={styles.carrot} source={require('../../assets/carrot3.png')}/>
+			<Image style={styles.tomatoe} source={require('../../assets/tomato.png')}/>
+			<Image style={styles.camera} source={require('../../assets/camera.png')}/>
 
 			<ScrollView>
 				<View style={styles.Home}>
@@ -29,13 +32,14 @@ export default function homeScreen({ navigation }) {
 				<TouchableOpacity onPress={() => navigation.navigate('Upload')} style={styles.Upload}>
 					<Text style={styles.UploadText}>Upload</Text>
 					<Text style={styles.UploadText}>Photo</Text>
+					
 				</TouchableOpacity>
-				<Image style={styles.carrot} source={require('../../assets/carrot3.png')}/>
+				
 				<View style={styles.reviewStyle}>
 					<Text style={styles.imageTitle}>Past Photos</Text>
 					<FlatList
 						showsVerticalScrollIndicator={true}
-						keyExtractor={(friend) => friend.type}
+						keyExtractor={(friend) => friend.name}
 						data={friends}
 						renderItem={({ item }) => {
 							// item === {name: 'Friend #1' ...}
@@ -106,8 +110,20 @@ const styles = StyleSheet.create({
 	carrot:{
 		position: 'absolute',
 		marginRight: 20,
-		height: 500,
-		width: 500
+		height: 450,
+		width: 460
+	},
+	tomatoe:{
+		position: 'absolute',
+		height: 570,
+		width: 200
+		
+	},
+	camera:{
+		elevation: 10,
+		position: 'absolute',
+		height: 600,
+		width: 490
 	}
 	
 });
