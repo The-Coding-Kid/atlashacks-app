@@ -98,99 +98,101 @@ export default function ImagePickerExample({ navigation }) {
 
 	return (
 		<SafeAreaView style={{ flexDirection: 'column' }}>
-			{image && (
-				<Image
-					//@ts-ignore
-					source={{ uri: image.uri }}
-					style={{ width: 350, height: 400, borderRadius: 20, alignSelf: 'center' }}
-				/>
-			)}
-			<TouchableOpacity
-				style={{
-					justifyContent: 'center',
-					alignItems: 'center',
-					borderRadius: 10,
-					height: 70,
-					marginHorizontal: 36,
-					marginTop: 30,
-					backgroundColor: '#58daff',
-					marginBottom: 10,
-				}}
-				onPress={pickImage}>
-				<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Choose Photo</Text>
-			</TouchableOpacity>
+			<ScrollView>
+				{image && (
+					<Image
+						//@ts-ignore
+						source={{ uri: image.uri }}
+						style={{ width: 350, height: 400, borderRadius: 20, alignSelf: 'center' }}
+					/>
+				)}
+				<TouchableOpacity
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						borderRadius: 10,
+						height: 70,
+						marginHorizontal: 36,
+						marginTop: 30,
+						backgroundColor: '#58daff',
+						marginBottom: 10,
+					}}
+					onPress={pickImage}>
+					<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Choose Photo</Text>
+				</TouchableOpacity>
 
-			<View style={styles.centeredView}>
-				<Modal animationType="slide" transparent={false} visible={modalVisible}>
-					<View style={styles.container}>
-						<Camera
-							style={styles.camera}
-							type={type}
-							ref={(ref) => {
-								setCameraRef(ref);
-							}}
-							ratio="5:4">
-							<View style={styles.buttonContainer}>
-								<TouchableOpacity
-									style={styles.flipButton}
-									onPress={() => {
-										setType(
-											type === Camera.Constants.Type.back
-												? Camera.Constants.Type.front
-												: Camera.Constants.Type.back
-										);
-									}}>
-									<Text style={styles.text}> Flip </Text>
-								</TouchableOpacity>
-							</View>
-						</Camera>
-					</View>
-					<TouchableOpacity
-						style={[styles.button, styles.buttonClose]}
-						onPress={() => {
-							setModalVisible(!modalVisible);
-						}}>
-						<View style={styles.backButton}>
-							<Text style={styles.textStyle}>Back</Text>
+				<View style={styles.centeredView}>
+					<Modal animationType="slide" transparent={false} visible={modalVisible}>
+						<View style={styles.container}>
+							<Camera
+								style={styles.camera}
+								type={type}
+								ref={(ref) => {
+									setCameraRef(ref);
+								}}
+								ratio="5:4">
+								<View style={styles.buttonContainer}>
+									<TouchableOpacity
+										style={styles.flipButton}
+										onPress={() => {
+											setType(
+												type === Camera.Constants.Type.back
+													? Camera.Constants.Type.front
+													: Camera.Constants.Type.back
+											);
+										}}>
+										<Text style={styles.text}> Flip </Text>
+									</TouchableOpacity>
+								</View>
+							</Camera>
 						</View>
-					</TouchableOpacity>
-					<TouchableOpacity
-						style={{ position: 'absolute', marginTop: 700, marginLeft: 150 }}
-						onPress={async () => {
-							if (cameraRef) {
-								let photo = await cameraRef.takePictureAsync();
-								console.log('photo', photo);
-								setImage(photo);
+						<TouchableOpacity
+							style={[styles.button, styles.buttonClose]}
+							onPress={() => {
 								setModalVisible(!modalVisible);
-							}
+							}}>
+							<View style={styles.backButton}>
+								<Text style={styles.textStyle}>Back</Text>
+							</View>
+						</TouchableOpacity>
+						<TouchableOpacity
+							style={{ position: 'absolute', marginTop: 700, marginLeft: 150 }}
+							onPress={async () => {
+								if (cameraRef) {
+									let photo = await cameraRef.takePictureAsync();
+									console.log('photo', photo);
+									setImage(photo);
+									setModalVisible(!modalVisible);
+								}
+							}}>
+							<Ionicons name="ellipse-outline" color="white" size={75} />
+						</TouchableOpacity>
+					</Modal>
+
+					<TouchableOpacity
+						style={styles.takePhoto}
+						onPress={() => {
+							setModalVisible(true);
 						}}>
-						<Ionicons name="ellipse-outline" color="white" size={75} />
+						<Text style={styles.buttonText}>Take a photo</Text>
 					</TouchableOpacity>
-				</Modal>
+				</View>
 
 				<TouchableOpacity
-					style={styles.takePhoto}
-					onPress={() => {
-						setModalVisible(true);
-					}}>
-					<Text style={styles.buttonText}>Take a photo</Text>
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						backgroundColor: '#001aff',
+						borderRadius: 10,
+						height: 70,
+						marginHorizontal: 36,
+						marginTop: 100,
+					}}
+					onPress={uploadPhoto}>
+					<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Upload It</Text>
 				</TouchableOpacity>
-			</View>
-
-			<TouchableOpacity
-				style={{
-					justifyContent: 'center',
-					alignItems: 'center',
-					backgroundColor: '#001aff',
-					borderRadius: 10,
-					height: 70,
-					marginHorizontal: 36,
-					marginTop: 100,
-				}}
-				onPress={uploadPhoto}>
-				<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Upload It</Text>
-			</TouchableOpacity>
-			{/* <Image source={require('../../assets/carrot2.png')} /> */}
+				{/* <Image source={require('../../assets/carrot2.png')} /> */}
+			</ScrollView>
 		</SafeAreaView>
 	);
 }
