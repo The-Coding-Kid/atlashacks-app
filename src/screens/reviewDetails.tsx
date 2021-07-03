@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, SafeAreaView, Modal } from 'react-native';
 
-const reviewDetails = ({navigation}) => {
+const reviewDetails = ({navigation, route}) => {
 	const friends = [
 		{ type: 'Image #1', image: require('../../assets/lunch2.jpg') },
 		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
