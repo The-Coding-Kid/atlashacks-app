@@ -36,12 +36,24 @@ export default function ImagePickerExample({ navigation }) {
 	const uploadPhoto = async () => {
 		let formData = new FormData();
 		//@ts-ignore
-		for (let i = 0; i < image.uri.length - 1; i++) {}
+		let string = image.uri;
+		//@ts-ignore
+		let file_name = ' ';
+		//@ts-ignore
+		for (let i = 0; i < image.uri.length; i++) {
+			//@ts-ignore
+			let substr = string.substring(i, image.uri.length);
+			if (!substr.includes('/')) {
+				file_name = substr;
+				break;
+			}
+		}
+		console.log(file_name);
 		formData.append('image', {
 			//@ts-ignore
 			uri: image.uri,
 			//@ts-ignore
-			name: 'image',
+			name: file_name,
 			type: 'image/jpeg',
 		});
 		try {
