@@ -42,10 +42,8 @@ export default function homeScreen({ navigation }) {
 						renderItem={({ item }) => {
 							// item === {name: 'Friend #1' ...}
 							return (
-								<TouchableOpacity onPress={() => navigation.navigate('Details')}>
-									{/*@ts-ignore*/}
-									<Image style={styles.imageStyle} source={item.image} />
-								</TouchableOpacity>
+								<Image style={styles.imageStyle} source={item.image} />
+
 							);
 						}}
 					/>
