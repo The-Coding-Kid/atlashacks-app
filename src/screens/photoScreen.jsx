@@ -25,7 +25,9 @@ export default function ImagePickerExample({ navigation }) {
 	const [hasPermission, setHasPermission] = useState(null);
 	const [type, setType] = useState(Camera.Constants.Type.back);
 	const [cameraRef, setCameraRef] = useState(null);
-	const [data, setData] = useState(null);
+	const [containted, setContainted] = useState([]);
+	const [notcontainted, setNotContainted] = useState([]);
+	const [stars, setStars] = useState(null);
 	const [modalVisible2, setModalVisible2] = useState(false);
 	const [uri, setUri] = useState(null);
 
@@ -58,7 +60,6 @@ export default function ImagePickerExample({ navigation }) {
 		});
 
 		console.log(result);
-
 		if (result.cancelled === false) {
 			setImage(result);
 		}
@@ -94,10 +95,12 @@ export default function ImagePickerExample({ navigation }) {
 				headers: { 'Content-Type': 'multipart/form-data' },
 			});
 			console.log(response.data);
+			setContainted(response.data[0]);
+			setNotContainted(response.data[1]);
+			setStars(response.data[2]);
 		} catch (err) {
 			console.error(err.response.data);
 		}
-
 		setModalVisible2(true);
 		setImages(item.image);
 	};
@@ -181,6 +184,7 @@ export default function ImagePickerExample({ navigation }) {
 					<Modal animationType="slide" transparent={false} visible={modalVisible2}>
 						<View style={styles.centeredView}>
 							<Image style={styles.imageStyle} source={{ uri: uri }} />
+							<Text>Stars: {stars}</Text>
 							<TouchableOpacity
 								style={[styles.button2, styles.buttonClose]}
 								onPress={() => {
@@ -238,6 +242,7 @@ const styles = StyleSheet.create({
 		width: 330,
 		height: 240,
 		margin: 7.5,
+		marginTop: 30,
 		borderRadius: 20,
 	},
 
