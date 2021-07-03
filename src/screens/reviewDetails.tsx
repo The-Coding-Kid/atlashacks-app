@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import ImageContext,{ BlogProvider } from '../context/context';
 import {
 	View,
 	Text,
@@ -11,12 +12,7 @@ import {
 } from 'react-native';
 
 const reviewDetails = ({ navigation }) => {
-	const friends = [
-		{ type: 'Image #1', image: require('../../assets/lunch2.jpg') },
-		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
-		{ type: 'Image #4', image: require('../../assets/lunch3.jpeg') },
-		{ type: 'Image #3', image: require('../../assets/food.jpg') },
-	];
+	const {friends, setFriends} = useContext(ImageContext);
 	const [modalVisible, setModalVisible] = useState(false);
 	const [images, setImages] = useState(null);
 

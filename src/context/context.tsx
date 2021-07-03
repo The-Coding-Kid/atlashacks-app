@@ -1,17 +1,27 @@
 import React, {useState} from 'react'
 
-const BlogContext = React.createContext()
+const ImageContext = React.createContext([
+  { name: 'Image #1', images: require('../../assets/lunch2.jpg') },
+  { name: 'Image #2', images: require('../../assets/school_lunch_tray.jpg') },
+	{ name: 'Image #3', images: require('../../assets/lunch3.jpeg') },
+	{ name: 'Image #4', images: require('../../assets/food.jpg') },
+])
 
-export const BlogProvider = ({ children }) =>{
-  const [blogPosts, setBlogPosts] = useState([]);
+export const BlogProvider = ({ children }) => {
+  const [image, setImage] = useState([
+    { name: 'Image #1', images: require('../../assets/lunch2.jpg') },
+		{ name: 'Image #2', images: require('../../assets/school_lunch_tray.jpg') },
+		{ name: 'Image #3', images: require('../../assets/lunch3.jpeg') },
+		{ name: 'Image #4', images: require('../../assets/food.jpg') },
+  ])
 
-  const addBlogPost = () => {
-    setBlogPosts([...blogPosts, { title: `Blog Post #${blogPosts.length + 1}` }])
-  }
+  // const addBlogPost = () => {
+  //   setImage([...image, {name: `Image #${image.length + 1}`, images: require('testing')}])
+  // }
 
-  return <BlogContext.Provider value={{ data: blogPosts, addBlogPost }}>
+  return <ImageContext.Provider value={image}>
         {children}
-  </BlogContext.Provider>
+  </ImageContext.Provider>
 }
 
-export default BlogContext;
+export default ImageContext;

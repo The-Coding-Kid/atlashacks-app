@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState, useContext} from 'react';
+import  ImageContext, { BlogProvider } from '../context/context';
 import {
 	StyleSheet,
 	Text,
@@ -11,18 +12,10 @@ import {
 	Image,
 } from 'react-native';
 
-interface image {
-	type: string;
-	image: string;
-}
+
 
 export default function homeScreen({ navigation }) {
-	const friends: image[] = [
-		{ type: 'Image #1', image: require('../../assets/lunch2.jpg') },
-		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
-		{ type: 'Image #r', image: require('../../assets/lunch3.jpeg') },
-		{ type: 'Image #3', image: require('../../assets/food.jpg') },
-	];
+	const {friends, setFriends} = useContext(ImageContext)
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView>
