@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Image, View, Platform, TouchableOpacity, Text, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import App from './CameraScreen';
 var axios = require('axios');
 
 export default function ImagePickerExample({ navigation }) {
@@ -89,6 +90,7 @@ export default function ImagePickerExample({ navigation }) {
 					Choose Photo
 				</Text>
 			</TouchableOpacity>
+			<App />
 			<TouchableOpacity
 				style={{
 					backgroundColor: '#60f4dc',
@@ -96,7 +98,7 @@ export default function ImagePickerExample({ navigation }) {
 					height: 70,
 					justifyContent: 'center',
 					alignItems: 'center',
-					marginTop: 20,
+					marginTop: 10,
 					width: 300,
 				}}
 				onPress={uploadPhoto}>

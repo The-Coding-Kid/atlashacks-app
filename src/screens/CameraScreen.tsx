@@ -55,7 +55,7 @@ export default function App() {
 						onPress={() => {
 							setModalVisible(true)
 							}}>
-						<Text>Take a photo</Text>
+						<Text style={styles.buttonText}>Take a photo</Text>
 							
 					</TouchableOpacity>
 						
@@ -76,14 +76,10 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: 'transparent',
 		flexDirection: 'row',
-		margin: 20,
 	},
 	text: {
 		color: 'white',
 		fontWeight: 'bold'
-	},
-	reviewDetails: {
-		margin: 15,
 	},
 	imageStyle: {
 		width: 330,
@@ -91,11 +87,7 @@ const styles = StyleSheet.create({
 		margin: 7.5,
 		borderRadius: 20,
 	},
-	imageTitle: {
-		fontSize: 50,
-		fontWeight: 'bold',
-		color: 'white',
-	},
+
 	reviewStyle: {
 		marginTop: 30,
 		margin: 7.5,
@@ -143,7 +135,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 	},
 	modalText: {
-		marginBottom: 15,
+		color: 'white',
 		textAlign: 'center',
 	},
 	takePhoto:{
@@ -165,6 +157,10 @@ const styles = StyleSheet.create({
 		marginTop: 13,
 		marginLeft: 0
 
+	},
+	buttonText:{
+		fontWeight: 'bold',
+		alignSelf: 'center'
 	}
 });
 
