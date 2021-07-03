@@ -11,7 +11,7 @@ import {
 	ScrollView,
 	SafeAreaView,
 	Modal,
-	StyleSheet
+	StyleSheet,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -28,6 +28,7 @@ export default function ImagePickerExample({ navigation }) {
 
 	useEffect(() => {
 		(async () => {
+			await Camera.getSupportedRatiosAsync();
 			const { status } = await Camera.requestPermissionsAsync();
 			setHasPermission(status === 'granted');
 			if (Platform.OS !== 'web') {
@@ -45,7 +46,6 @@ export default function ImagePickerExample({ navigation }) {
 	if (hasPermission === false) {
 		return <Text>No access to camera</Text>;
 	}
-
 
 	const pickImage = async () => {
 		let result = await ImagePicker.launchImageLibraryAsync({
@@ -68,6 +68,7 @@ export default function ImagePickerExample({ navigation }) {
 		let string = image.uri;
 		//@ts-ignore
 		let file_name = ' ';
+		console.log('Data: ', image);
 		//@ts-ignore
 		for (let i = 0; i < image.uri.length; i++) {
 			//@ts-ignore
@@ -122,65 +123,61 @@ export default function ImagePickerExample({ navigation }) {
 			<App />
 
 			<View style={styles.centeredView}>
-			<Modal animationType="slide" transparent={false} visible={modalVisible}>
-				<View style={styles.container}>
-					<Camera
-						style={styles.camera}
-						type={type}
-						ref={(ref) => {
-							setCameraRef(ref);
-						}}
-						ratio="5:4">
-						<View style={styles.buttonContainer}>
-							<TouchableOpacity
-								style={styles.flipButton}
-								onPress={() => {
-									setType(
-										type === Camera.Constants.Type.back
-											? Camera.Constants.Type.front
-											: Camera.Constants.Type.back
-									);
-								}}>
-								<Text style={styles.text}> Flip </Text>
-							</TouchableOpacity>
-						</View>
-					</Camera>
-				</View>
-				<TouchableOpacity
-					style={[styles.button, styles.buttonClose]}
-					onPress={() => {
-						setModalVisible(!modalVisible);
-					}}>
-					<View style={styles.backButton}>
-						<Text style={styles.textStyle}>Back</Text>
+				<Modal animationType="slide" transparent={false} visible={modalVisible}>
+					<View style={styles.container}>
+						<Camera
+							style={styles.camera}
+							type={type}
+							ref={(ref) => {
+								setCameraRef(ref);
+							}}
+							ratio="5:4">
+							<View style={styles.buttonContainer}>
+								<TouchableOpacity
+									style={styles.flipButton}
+									onPress={() => {
+										setType(
+											type === Camera.Constants.Type.back
+												? Camera.Constants.Type.front
+												: Camera.Constants.Type.back
+										);
+									}}>
+									<Text style={styles.text}> Flip </Text>
+								</TouchableOpacity>
+							</View>
+						</Camera>
 					</View>
+					<TouchableOpacity
+						style={[styles.button, styles.buttonClose]}
+						onPress={() => {
+							setModalVisible(!modalVisible);
+						}}>
+						<View style={styles.backButton}>
+							<Text style={styles.textStyle}>Back</Text>
+						</View>
+					</TouchableOpacity>
+					<TouchableOpacity
+						style={{ position: 'absolute', marginTop: 700, marginLeft: 150 }}
+						onPress={async () => {
+							if (cameraRef) {
+								let photo = await cameraRef.takePictureAsync();
+								console.log('photo', photo);
+								setImage(photo);
+							}
+						}}>
+						<Ionicons name="ellipse-outline" color="white" size={75} />
+					</TouchableOpacity>
+				</Modal>
+
+				<TouchableOpacity
+					style={styles.takePhoto}
+					onPress={() => {
+						setModalVisible(true);
+					}}>
+					<Text style={styles.buttonText}>Take a photo</Text>
 				</TouchableOpacity>
-				<Ionicons
-					name="ellipse-outline"
-					color="white"
-					size={75}
-					style={{ position: 'absolute', marginTop: 700, marginLeft: 150 }}
-					onPress={async () => {
-						if (cameraRef) {
-							let photo = await cameraRef.takePictureAsync();
-							console.log('photo', photo);
-							setData(photo);
-							console.log('Data: ', data);
-						}
-					}}
-				/>
-			</Modal>
+			</View>
 
-			<TouchableOpacity
-				style={styles.takePhoto}
-				onPress={() => {
-					setModalVisible(true);
-				}}>
-				<Text style={styles.buttonText}>Take a photo</Text>
-			</TouchableOpacity>
-		</View>
-
-			
 			<TouchableOpacity
 				style={{
 					justifyContent: 'center',
