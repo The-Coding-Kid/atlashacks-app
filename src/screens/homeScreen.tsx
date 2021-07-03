@@ -21,6 +21,7 @@ export default function homeScreen({ navigation }) {
 	  	{ name: 'Image #4', image: require('../../assets/food.jpg') }]
 	return (
 		<SafeAreaView style={styles.container}>
+
 			<ScrollView>
 				<View style={styles.Home}>
 					<Text style={styles.HomeText}> Home</Text>
@@ -29,6 +30,7 @@ export default function homeScreen({ navigation }) {
 					<Text style={styles.UploadText}>Upload</Text>
 					<Text style={styles.UploadText}>Photo</Text>
 				</TouchableOpacity>
+				<Image style={styles.carrot} source={require('../../assets/carrot2.png')}/>
 				<View style={styles.reviewStyle}>
 					<Text style={styles.imageTitle}>Past Photos</Text>
 					<FlatList
@@ -101,5 +103,10 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		color: 'white',
 	},
+	carrot:{
+		position: 'absolute',
+		height: 400,
+		width: 400
+	}
 	
 });
