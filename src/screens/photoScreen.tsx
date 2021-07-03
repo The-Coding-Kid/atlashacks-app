@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Camera } from 'expo-camera';
+import { Ionicons } from '@expo/vector-icons';
 import {
 	Button,
 	Image,
@@ -8,6 +10,7 @@ import {
 	Text,
 	ScrollView,
 	SafeAreaView,
+	Modal
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
