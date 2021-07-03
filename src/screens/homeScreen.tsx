@@ -30,7 +30,7 @@ export default function homeScreen({ navigation }) {
 					<Text style={styles.UploadText}>Upload</Text>
 					<Text style={styles.UploadText}>Photo</Text>
 				</TouchableOpacity>
-				<Image style={styles.carrot} source={require('../../assets/carrot2.png')}/>
+				<Image style={styles.carrot} source={require('../../assets/carrot3.png')}/>
 				<View style={styles.reviewStyle}>
 					<Text style={styles.imageTitle}>Past Photos</Text>
 					<FlatList
@@ -105,8 +105,9 @@ const styles = StyleSheet.create({
 	},
 	carrot:{
 		position: 'absolute',
-		height: 400,
-		width: 400
+		marginRight: 20,
+		height: 500,
+		width: 500
 	}
 	
 });
