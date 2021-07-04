@@ -68,9 +68,7 @@ export default function App() {
 					onPress={async () => {
 						if (cameraRef) {
 							let photo = await cameraRef.takePictureAsync();
-							console.log('photo', photo);
 							setData(photo);
-							console.log('Data: ', data);
 						}
 					}}
 				/>

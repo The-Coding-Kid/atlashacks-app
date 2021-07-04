@@ -61,7 +61,6 @@ export default function ImagePickerExample({ navigation }) {
 			quality: 1,
 		});
 
-		console.log(result);
 		if (result.cancelled === false) {
 			setImage(result);
 		}
@@ -74,7 +73,6 @@ export default function ImagePickerExample({ navigation }) {
 		setUri(image.uri);
 		//@ts-ignore
 		let file_name = ' ';
-		console.log('Data: ', image);
 		//@ts-ignore
 		for (let i = 0; i < image.uri.length; i++) {
 			//@ts-ignore
@@ -84,7 +82,6 @@ export default function ImagePickerExample({ navigation }) {
 				break;
 			}
 		}
-		console.log(file_name);
 		formData.append('image', {
 			//@ts-ignore
 			uri: image.uri,
@@ -98,7 +95,6 @@ export default function ImagePickerExample({ navigation }) {
 				headers: { 'Content-Type': 'multipart/form-data' },
 			});
 			setLoading(false);
-			console.log(response.data);
 			setContainted(response.data[0]);
 			setNotContainted(response.data[1]);
 			setStars(response.data[2]);
@@ -110,7 +106,6 @@ export default function ImagePickerExample({ navigation }) {
 				uri: image.uri,
 				stars: stars,
 			});
-			console.log(response.data);
 		} catch (err) {
 			console.error(err.response.data);
 		}
@@ -193,7 +188,6 @@ export default function ImagePickerExample({ navigation }) {
 							onPress={async () => {
 								if (cameraRef) {
 									let photo = await cameraRef.takePictureAsync();
-									console.log('photo', photo);
 									setImage(photo);
 									setModalVisible(!modalVisible);
 								}
