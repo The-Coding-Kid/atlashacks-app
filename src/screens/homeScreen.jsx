@@ -28,7 +28,6 @@ export default function homeScreen({ navigation }) {
 				.get('http://192.168.86.234:5000/all')
 				.then((res) => {
 					setData(res.data);
-					console.log(res.data);
 				})
 				.catch((err) => console.error(err));
 		};
