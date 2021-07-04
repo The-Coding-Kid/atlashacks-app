@@ -15,10 +15,10 @@ import {
 
 export default function homeScreen({ navigation }) {
 	const friends = [
+		{ name: 'Image #4', image: require('../../assets/food.jpg') },
 		{ name: 'Image #1', image: require('../../assets/lunch2.jpg') },
 		{ name: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
-	  { name: 'Image #3', image: require('../../assets/lunch3.jpeg') },
-	  { name: 'Image #4', image: require('../../assets/food.jpg') }]
+	  { name: 'Image #3', image: require('../../assets/lunch3.jpeg') },]
 	return (
 		<SafeAreaView style={styles.container}>
 			{/* <Image style={styles.carrot} source={require('../../assets/carrot3.png')}/>
@@ -30,8 +30,8 @@ export default function homeScreen({ navigation }) {
 					<Text style={styles.HomeText}> Home</Text>
 				</View>
 				<TouchableOpacity onPress={() => navigation.navigate('Upload')} style={styles.Upload}>
-					<Text style={styles.UploadText}>Upload</Text>
-					<Text style={styles.UploadText}>Photo</Text>
+					<Text style={styles.UploadText}>Upload Photo</Text>
+					{/* <Text style={styles.UploadText}></Text> */}
 					
 				</TouchableOpacity>
 				
@@ -64,29 +64,49 @@ const styles = StyleSheet.create({
 		marginTop: 30,
 		margin: 15,
 		height: 150,
-		backgroundColor: '#97fed5',
+		backgroundColor: '#D6D6D6',
 		borderRadius: 20,
 		justifyContent: 'center',
+		borderColor: '#c0c0c0',
+		// borderWidth: 1,
+		shadowColor: 'black',
+    shadowOffset: {
+      width: 1000000,
+      height: 1000000
+    },
+    shadowOpacity: 0.777777,
+    shadowRadius: 10,
+    elevation: 6
 	},
 	Upload: {
 		marginBottom: 15,
 		marginHorizontal: 15,
-		height: 250,
-		backgroundColor: '#4ee3ff',
+		height: 150,
+		backgroundColor: '#D6D6D6',
 		borderRadius: 25,
+		// borderWidth: 3,
 		alignItems: 'center',
+		justifyContent: 'center',
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 1000000,
+      height: 1000000
+    },
+    shadowOpacity: 0.777777,
+    shadowRadius: 10,
+    elevation: 6
 	},
 	UploadText: {
 		alignSelf: 'center',
-		fontSize: 50,
+		fontSize: 40,
 		fontWeight: 'bold',
-		color: 'white',
+		color: '#165e54',
 	},
 	HomeText: {
 		alignSelf: 'center',
 		fontWeight: 'bold',
-		fontSize: 50,
-		color: 'white',
+		fontSize: 45,
+		color: '#1e56a9',
 	},
 	reviewStyle: {
 		marginBottom: 15,

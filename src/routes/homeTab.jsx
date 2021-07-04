@@ -32,7 +32,7 @@ export default function Navigator() {
 				})}
 				tabBarOptions={{
 					style: {
-						backgroundColor: '#9ebef3',
+						backgroundColor: '#1e56a9',
 					},
 					activeTintColor: '#ffffff',
 					inactiveTintColor: '#ffffff',
