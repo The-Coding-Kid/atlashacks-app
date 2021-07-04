@@ -11,6 +11,7 @@ import {
 	Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 var axios = require("axios")
 
 export default function homeScreen({ navigation }) {
@@ -42,7 +43,7 @@ export default function homeScreen({ navigation }) {
 			<ScrollView>
 				<View style={styles.Home}>
 					<Ionicons name="menu" size={30} color="white" style={styles.menu} />
-					<Text style={styles.HomeText}>Edu Eats</Text>
+					<Text style={styles.HomeText}>Fresh Coices</Text>
 				</View>
 				<TouchableOpacity onPress={() => navigation.navigate('Upload')} style={styles.Upload}>
 					<Text style={styles.UploadText}>Upload Photo    </Text>
