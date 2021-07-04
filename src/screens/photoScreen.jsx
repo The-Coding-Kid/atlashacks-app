@@ -259,10 +259,11 @@ export default function ImagePickerExample({ navigation }) {
 									<Ionicons name="star-half" size={30} color="#ffd944" />
 								</View>
 							) : null}
+							<Text style={styles.contain}>Contains:</Text>
 							<FlatList
 								data={containted}
 								renderItem={({ item }) => {
-									return <Text>{item}</Text>;
+									return <Text style={styles.list}>{item}</Text>;
 								}}
 							/>
 							<TouchableOpacity
@@ -299,7 +300,7 @@ export default function ImagePickerExample({ navigation }) {
 				</TouchableOpacity>
 				{loading === true ? (
 					<View>
-						<Text>Please Wait. System Processing</Text>
+						<Text style={styles.loading}>Please Wait. System Processing</Text>
 						<ActivityIndicator size="large" color="blue" />
 					</View>
 				) : null}
@@ -370,11 +371,12 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 	},
 	button2: {
+		position: 'absolute',
 		borderRadius: 15,
 		padding: 10,
 		elevation: 2,
 		alignItems: 'center',
-		marginTop: 280,
+		marginTop: 700,
 	},
 	buttonOpen: {
 		backgroundColor: '#F194FF',
@@ -416,4 +418,13 @@ const styles = StyleSheet.create({
 		color: 'white',
 		fontSize: 30,
 	},
+	contain:{
+		alignSelf: 'flex-start',
+		marginLeft: 60,
+		fontWeight: 'bold'
+	},
+	loading:{
+		fontWeight: 'bold',
+		fontSize: 18
+	}
 });
