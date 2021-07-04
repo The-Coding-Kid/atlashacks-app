@@ -101,6 +101,15 @@ export default function ImagePickerExample({ navigation }) {
 		} catch (err) {
 			console.error(err.response.data);
 		}
+		try {
+			const response = await axios.post(`http://192.168.86.234:5000/store`, {
+				uri: image.uri,
+				stars: stars,
+			});
+			console.log(response.data);
+		} catch (err) {
+			console.error(err.response.data);
+		}
 		setModalVisible2(true);
 		setImages(item.image);
 	};
@@ -134,7 +143,8 @@ export default function ImagePickerExample({ navigation }) {
 						style={{
 							color: 'white',
 							fontSize: 30,
-							fontFamily: 'Roboto-Condensed-Bold',
+							fontWeight: 'bold',
+							fontFamily: 'Roboto-Condensed',
 						}}>
 						Choose Photo
 					</Text>
@@ -192,7 +202,7 @@ export default function ImagePickerExample({ navigation }) {
 						<View style={styles.centeredView}>
 							<Image style={styles.imageStyle} source={{ uri: uri }} />
 							<View style={{ marginTop: 40, marginBottom: 30 }}>
-								<Text style={{ fontSize: 30, fontFamily: 'Roboto-Condensed-Bold', }}>Overall Rating: {stars}</Text>
+								<Text style={{ fontSize: 30, fontWeight: 'bold' }}>Overall Rating: {stars}</Text>
 							</View>
 							{stars === 2 ? (
 								<View style={{ flexDirection: 'row' }}>
@@ -271,7 +281,7 @@ export default function ImagePickerExample({ navigation }) {
 						marginTop: 35,
 					}}
 					onPress={uploadPhoto}>
-					<Text style={{ color: 'white', fontSize: 30, fontFamily: 'Roboto-Condensed-Bold', }}>Upload It</Text>
+					<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Upload It</Text>
 				</TouchableOpacity>
 				{/* <Image source={require('../../assets/carrot2.png')} /> */}
 			</ScrollView>
@@ -293,7 +303,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		color: 'white',
-		fontFamily: 'Roboto-Condensed-Bold',
+		fontWeight: 'bold',
 	},
 	imageStyle: {
 		width: 330,
@@ -354,7 +364,7 @@ const styles = StyleSheet.create({
 	},
 	textStyle: {
 		color: 'white',
-		fontFamily: 'Roboto-Condensed-Bold'
+		fontWeight: 'bold',
 	},
 	modalText: {
 		color: 'white',
@@ -382,7 +392,7 @@ const styles = StyleSheet.create({
 		marginLeft: 0,
 	},
 	buttonText: {
-		fontFamily: 'Roboto-Condensed-Bold',
+		fontWeight: 'bold',
 		color: 'white',
 		fontSize: 30,
 	},
