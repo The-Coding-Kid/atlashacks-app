@@ -26,13 +26,17 @@ export default function homeScreen({ navigation }) {
 	useEffect(() => {
 		const fetchData = async () => {
 			await axios
-				.get(`http://192.168.86.27:5000/all`)
+				.get('http://192.168.86.27:5000/all')
 				.then((res) => {
 					setData(res.data);
 				})
 				.catch((err) => console.error(err));
 		};
-		fetchData();
+		const interval = setInterval(() => {
+			fetchData();
+		}, 10000);
+
+		return () => clearInterval(interval);
 	}, []);
 	return (
 		<SafeAreaView style={styles.container}>
