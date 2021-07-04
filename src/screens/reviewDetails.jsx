@@ -21,6 +21,7 @@ const reviewDetails = ({ navigation }) => {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [images, setImages] = useState(null);
 	const [data, setData] = useState(null);
+	const [start, setStar] = useState(null)
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -44,7 +45,7 @@ const reviewDetails = ({ navigation }) => {
 			<View style={styles.centeredView}>
 				<Modal animationType="slide" transparent={false} visible={modalVisible}>
 					<View style={styles.centeredView}>
-						<Image style={styles.imageStyle} source={images} />
+						<Image style={styles.imageStyle} source={{uri: images}} />
 						<TouchableOpacity
 							style={[styles.button, styles.buttonClose]}
 							onPress={() => {
@@ -65,6 +66,7 @@ const reviewDetails = ({ navigation }) => {
 								onPress={() => {
 									setModalVisible(true);
 									setImages(item.image);
+									setStar(item.stars)
 								}}>
 								{/*@ts-ignore*/}
 								<Image style={styles.imageStyle} source={{ uri: item.file_name }} />
