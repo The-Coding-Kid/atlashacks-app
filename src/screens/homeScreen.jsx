@@ -98,15 +98,15 @@ const styles = StyleSheet.create({
 	UploadText: {
 		alignSelf: 'center',
 		fontSize: 25,
-		fontWeight: 'bold',
 		color: '#165e54',
+		fontFamily: 'Roboto-Condensed-Bold'
 	},
 	HomeText: {
 		alignSelf: 'center',
-		fontWeight: 'bold',
 		fontSize: 25,
 		color: 'white',
-		marginLeft: 100
+		marginLeft: 100,
+		fontFamily: 'Roboto-Condensed-Bold'
 	},
 	reviewStyle: {
 		marginBottom: 15,
@@ -124,8 +124,8 @@ const styles = StyleSheet.create({
 	},
 	imageTitle: {
 		fontSize: 18,
-		fontWeight: 'bold',
 		color: 'white',
+		fontFamily: 'Roboto-Condensed-Bold'
 	},
 	carrot: {
 		position: 'absolute',

@@ -34,6 +34,9 @@ export default function Navigator() {
 					style: {
 						backgroundColor: '#1e56a9',
 					},
+					labelStyle: {
+						fontFamily: 'Roboto-Condensed-Bold'
+					},
 					activeTintColor: '#ffffff',
 					inactiveTintColor: '#ffffff',
 				}}>

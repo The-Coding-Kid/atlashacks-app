@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
 	},
 	imageTitle: {
 		fontSize: 50,
-		fontWeight: 'bold',
+		fontFamily: 'Roboto-Condensed-Bold',
 		color: 'white',
 	},
 	reviewStyle: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
 	},
 	textStyle: {
 		color: 'white',
-		fontWeight: 'bold',
+		fontFamily: 'Roboto-Condensed-Bold',
 	},
 	modalText: {
 		marginBottom: 15,
