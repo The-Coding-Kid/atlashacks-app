@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
 	StyleSheet,
 	Text,
@@ -12,14 +12,13 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-
-
 export default function homeScreen({ navigation }) {
 	const friends = [
 		{ name: 'Image #4', image: require('../../assets/food.jpg') },
 		{ name: 'Image #1', image: require('../../assets/lunch2.jpg') },
 		{ name: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
-	  { name: 'Image #3', image: require('../../assets/lunch3.jpeg') },]
+		{ name: 'Image #3', image: require('../../assets/lunch3.jpeg') },
+	];
 	return (
 		<SafeAreaView style={styles.container}>
 			{/* <Image style={styles.carrot} source={require('../../assets/carrot3.png')}/>
@@ -35,9 +34,8 @@ export default function homeScreen({ navigation }) {
 					<Text style={styles.UploadText}>Upload Photo    </Text>
 					<Ionicons name="camera-outline" size={40} color="black"/>
 					{/* <Text style={styles.UploadText}></Text> */}
-					
 				</TouchableOpacity>
-				
+
 				<View style={styles.reviewStyle}>
 					<Text style={styles.imageTitle}>Past Photos</Text>
 					<FlatList
@@ -46,10 +44,7 @@ export default function homeScreen({ navigation }) {
 						data={friends}
 						renderItem={({ item }) => {
 							// item === {name: 'Friend #1' ...}
-							return (
-								<Image style={styles.imageStyle} source={item.image} />
-
-							);
+							return <Image style={styles.imageStyle} source={item.image} />;
 						}}
 					/>
 				</View>
@@ -132,20 +127,24 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		color: 'white',
 	},
-	carrot:{
+	carrot: {
 		position: 'absolute',
 		marginRight: 20,
 		height: 450,
-		width: 460
+		width: 460,
 	},
-	tomatoe:{
+	tomatoe: {
 		position: 'absolute',
 		height: 570,
-		width: 200
-		
+		width: 200,
 	},
 	menu:{
 		marginTop: 19.5
+	},
+	camera: {
+		elevation: 10,
+		position: 'absolute',
+		height: 600,
+		width: 490,
 	}
-	
 });
