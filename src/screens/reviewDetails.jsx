@@ -102,7 +102,8 @@ const styles = StyleSheet.create({
 	reviewStyle: {
 		marginTop: 30,
 		height: 70,
-		backgroundColor: '#1e56a9',		alignItems: 'center',
+		backgroundColor: '#1e56a9',		
+		alignItems: 'center',
 		shadowColor: 'black',
     shadowOffset: {
       width: 1000000,

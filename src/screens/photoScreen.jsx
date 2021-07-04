@@ -135,7 +135,7 @@ export default function ImagePickerExample({ navigation }) {
 						height: 70,
 						marginHorizontal: 36,
 						marginTop: 30,
-						backgroundColor: '#58daff',
+						backgroundColor: '#1e56a9',
 						marginBottom: 10,
 					}}
 					onPress={pickImage}>
@@ -274,7 +274,7 @@ export default function ImagePickerExample({ navigation }) {
 					style={{
 						justifyContent: 'center',
 						alignItems: 'center',
-						backgroundColor: '#001aff',
+						backgroundColor: '#1e56a9',
 						borderRadius: 10,
 						height: 70,
 						marginHorizontal: 36,
@@ -371,7 +371,7 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 	},
 	takePhoto: {
-		backgroundColor: '#3d3add',
+		backgroundColor: '#1e56a9',
 		height: 70,
 		borderRadius: 10,
 		paddingHorizontal: 46,
