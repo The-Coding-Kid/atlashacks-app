@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 	StyleSheet,
 	Text,
@@ -11,6 +11,7 @@ import {
 	Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+var axios = require("axios")
 
 export default function homeScreen({ navigation }) {
 	const friends = [
@@ -19,6 +20,20 @@ export default function homeScreen({ navigation }) {
 		{ name: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
 		{ name: 'Image #3', image: require('../../assets/lunch3.jpeg') },
 	];
+	const [data, setData] = useState(null);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			await axios
+				.get('http://192.168.86.234:5000/all')
+				.then((res) => {
+					setData(res.data);
+					console.log(res.data);
+				})
+				.catch((err) => console.error(err));
+		};
+		fetchData();
+	}, []);
 	return (
 		<SafeAreaView style={styles.container}>
 			{/* <Image style={styles.carrot} source={require('../../assets/carrot3.png')}/>
@@ -40,11 +55,11 @@ export default function homeScreen({ navigation }) {
 					<Text style={styles.imageTitle}>Past Photos</Text>
 					<FlatList
 						showsVerticalScrollIndicator={true}
-						keyExtractor={(friend) => friend.name}
-						data={friends}
+						keyExtractor={(friend) => friend.id}
+						data={data}
 						renderItem={({ item }) => {
 							// item === {name: 'Friend #1' ...}
-							return <Image style={styles.imageStyle} source={item.image} />;
+							return <Image style={styles.imageStyle} source={{uri: item.file_name}} />;
 						}}
 					/>
 				</View>
