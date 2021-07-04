@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
-var axios = require("axios")
+var axios = require('axios');
 
 export default function homeScreen({ navigation }) {
 	const friends = [
@@ -43,11 +43,11 @@ export default function homeScreen({ navigation }) {
 			<ScrollView>
 				<View style={styles.Home}>
 					<Ionicons name="menu" size={30} color="white" style={styles.menu} />
-					<Text style={styles.HomeText}>Fresh Coices</Text>
+					<Text style={styles.HomeText}>Fresh Choices</Text>
 				</View>
 				<TouchableOpacity onPress={() => navigation.navigate('Upload')} style={styles.Upload}>
-					<Text style={styles.UploadText}>Upload Photo    </Text>
-					<Ionicons name="camera-outline" size={40} color="white"/>
+					<Text style={styles.UploadText}>Upload Photo </Text>
+					<Ionicons name="camera-outline" size={40} color="white" />
 					{/* <Text style={styles.UploadText}></Text> */}
 				</TouchableOpacity>
 
@@ -59,7 +59,7 @@ export default function homeScreen({ navigation }) {
 						data={data}
 						renderItem={({ item }) => {
 							// item === {name: 'Friend #1' ...}
-							return <Image style={styles.imageStyle} source={{uri: item.file_name}} />;
+							return <Image style={styles.imageStyle} source={{ uri: item.file_name }} />;
 						}}
 					/>
 				</View>
@@ -81,15 +81,15 @@ const styles = StyleSheet.create({
 		borderColor: '#c0c0c0',
 		borderColor: 'black',
 		shadowColor: 'black',
-    shadowOffset: {
-      width: 1000000,
-      height: 1000000
-    },
-    shadowOpacity: 0.777777,
-    shadowRadius: 10,
-    elevation: 6,
+		shadowOffset: {
+			width: 1000000,
+			height: 1000000,
+		},
+		shadowOpacity: 0.777777,
+		shadowRadius: 10,
+		elevation: 6,
 		flexDirection: 'row',
-		justifyContent: 'flex-start'
+		justifyContent: 'flex-start',
 	},
 	Upload: {
 		marginBottom: 15,
@@ -100,28 +100,28 @@ const styles = StyleSheet.create({
 		// borderWidth: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-    shadowColor: 'black',
-    shadowOffset: {
-      width: 1000000,
-      height: 1000000
-    },
-    shadowOpacity: 0.777777,
-    shadowRadius: 10,
-    elevation: 6,
-		flexDirection: 'row'
+		shadowColor: 'black',
+		shadowOffset: {
+			width: 1000000,
+			height: 1000000,
+		},
+		shadowOpacity: 0.777777,
+		shadowRadius: 10,
+		elevation: 6,
+		flexDirection: 'row',
 	},
 	UploadText: {
 		alignSelf: 'center',
 		fontSize: 25,
 		color: '#fff',
-		fontFamily: 'Roboto-Condensed-Bold'
+		fontFamily: 'Roboto-Condensed-Bold',
 	},
 	HomeText: {
 		alignSelf: 'center',
 		fontSize: 25,
 		color: 'white',
 		marginLeft: 100,
-		fontFamily: 'Roboto-Condensed-Bold'
+		fontFamily: 'Roboto-Condensed-Bold',
 	},
 	reviewStyle: {
 		marginBottom: 15,
@@ -129,13 +129,13 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		alignItems: 'center',
 		shadowColor: 'black',
-    shadowOffset: {
-      width: 1000000,
-      height: 1000000
-    },
-    shadowOpacity: 0.777777,
-    shadowRadius: 10,
-    elevation: 6,
+		shadowOffset: {
+			width: 1000000,
+			height: 1000000,
+		},
+		shadowOpacity: 0.777777,
+		shadowRadius: 10,
+		elevation: 6,
 	},
 	imageStyle: {
 		height: 240,
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
 	imageTitle: {
 		fontSize: 18,
 		color: '#1e56a9',
-		fontFamily: 'Roboto-Condensed-Bold'
+		fontFamily: 'Roboto-Condensed-Bold',
 	},
 	carrot: {
 		position: 'absolute',
@@ -160,13 +160,13 @@ const styles = StyleSheet.create({
 		height: 570,
 		width: 200,
 	},
-	menu:{
-		marginTop: 19.5
+	menu: {
+		marginTop: 19.5,
 	},
 	camera: {
 		elevation: 10,
 		position: 'absolute',
 		height: 600,
 		width: 490,
-	}
+	},
 });
