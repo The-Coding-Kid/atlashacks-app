@@ -10,6 +10,7 @@ import {
 	ScrollView,
 	Image,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -27,10 +28,12 @@ export default function homeScreen({ navigation }) {
 
 			<ScrollView>
 				<View style={styles.Home}>
+					<Ionicons name="menu" size={24} color="black" />
 					<Text style={styles.HomeText}> Home</Text>
 				</View>
 				<TouchableOpacity onPress={() => navigation.navigate('Upload')} style={styles.Upload}>
-					<Text style={styles.UploadText}>Upload Photo</Text>
+					<Text style={styles.UploadText}>Upload Photo    </Text>
+					<Ionicons name="camera-outline" size={40} color="black"/>
 					{/* <Text style={styles.UploadText}></Text> */}
 					
 				</TouchableOpacity>
@@ -58,17 +61,15 @@ export default function homeScreen({ navigation }) {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#e5e5e5',
 	},
 	Home: {
-		marginTop: 30,
-		margin: 15,
-		height: 150,
-		backgroundColor: '#D6D6D6',
-		borderRadius: 20,
+		height: 70,
+		backgroundColor: 'white',
+		marginVertical: 30,
 		justifyContent: 'center',
 		borderColor: '#c0c0c0',
-		// borderWidth: 1,
+		borderColor: 'black',
 		shadowColor: 'black',
     shadowOffset: {
       width: 1000000,
@@ -76,15 +77,17 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.777777,
     shadowRadius: 10,
-    elevation: 6
+    elevation: 6,
+		flexDirection: 'row',
+		justifyContent: 'center'
 	},
 	Upload: {
 		marginBottom: 15,
 		marginHorizontal: 15,
-		height: 150,
-		backgroundColor: '#D6D6D6',
+		height: 70,
+		backgroundColor: '#fff',
 		borderRadius: 25,
-		// borderWidth: 3,
+		borderWidth: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
     shadowColor: 'black',
@@ -94,18 +97,19 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.777777,
     shadowRadius: 10,
-    elevation: 6
+    elevation: 6,
+		flexDirection: 'row'
 	},
 	UploadText: {
 		alignSelf: 'center',
-		fontSize: 40,
+		fontSize: 25,
 		fontWeight: 'bold',
 		color: '#165e54',
 	},
 	HomeText: {
 		alignSelf: 'center',
 		fontWeight: 'bold',
-		fontSize: 45,
+		fontSize: 25,
 		color: '#1e56a9',
 	},
 	reviewStyle: {
