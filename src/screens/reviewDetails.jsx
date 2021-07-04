@@ -9,6 +9,7 @@ import {
 	SafeAreaView,
 	Modal,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 var axios = require('axios');
 
 const reviewDetails = ({ navigation }) => {
@@ -37,6 +38,7 @@ const reviewDetails = ({ navigation }) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.reviewStyle}>
+				<Ionicons name="menu" size={30} color="white" style={styles.menu} />
 				<Text style={styles.imageTitle}>Past Photos</Text>
 			</View>
 			<View style={styles.centeredView}>
@@ -78,7 +80,7 @@ const reviewDetails = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: '#e5e5e5',
 	},
 	reviewDetails: {
 		margin: 15,
@@ -88,18 +90,28 @@ const styles = StyleSheet.create({
 		height: 240,
 		margin: 7.5,
 		borderRadius: 20,
+		
 	},
 	imageTitle: {
-		fontSize: 50,
+		marginLeft: 120,
+		position: 'absolute',
+		fontSize: 25,
 		fontFamily: 'Roboto-Condensed-Bold',
 		color: 'white',
 	},
 	reviewStyle: {
 		marginTop: 30,
-		margin: 7.5,
-		backgroundColor: '#97fed5',
-		borderRadius: 20,
-		alignItems: 'center',
+		height: 70,
+		backgroundColor: '#1e56a9',		alignItems: 'center',
+		shadowColor: 'black',
+    shadowOffset: {
+      width: 1000000,
+      height: 1000000
+    },
+    shadowOpacity: 0.777777,
+    shadowRadius: 10,
+    elevation: 6,
+		flexDirection: 'row'
 	},
 	centeredView: {
 		flex: 1,
@@ -140,6 +152,10 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 		textAlign: 'center',
 	},
+	menu:{
+		position: 'absolute',
+		marginLeft: 0
+	}
 });
 
 export default reviewDetails;
