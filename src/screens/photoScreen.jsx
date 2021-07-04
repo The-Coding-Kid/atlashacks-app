@@ -94,10 +94,11 @@ export default function ImagePickerExample({ navigation }) {
 			const response = await axios.post(`http://192.168.86.234:5000/upload-image`, formData, {
 				headers: { 'Content-Type': 'multipart/form-data' },
 			});
-			setLoading(false);
 			setContainted(response.data[0]);
 			setNotContainted(response.data[1]);
 			setStar(response.data[2]);
+			setLoading(false);
+			setModalVisible2(true);
 		} catch (err) {
 			console.error(err.response.data);
 		}
@@ -112,8 +113,6 @@ export default function ImagePickerExample({ navigation }) {
 		} catch (err) {
 			console.error(err.response.data);
 		}
-		setLoading(false);
-		setModalVisible2(true);
 		setImages(item.image);
 	};
 
@@ -263,6 +262,7 @@ export default function ImagePickerExample({ navigation }) {
 								style={[styles.button2, styles.buttonClose]}
 								onPress={() => {
 									setModalVisible2(!modalVisible2);
+									post_to_database();
 								}}>
 								<Text style={styles.textStyle}>Done</Text>
 							</TouchableOpacity>
@@ -287,7 +287,7 @@ export default function ImagePickerExample({ navigation }) {
 						marginHorizontal: 36,
 						marginTop: 35,
 					}}
-					onPress={post_and_upload}>
+					onPress={uploadPhoto}>
 					<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Upload It</Text>
 				</TouchableOpacity>
 				{loading === true ? (
