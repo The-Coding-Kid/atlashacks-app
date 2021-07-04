@@ -128,6 +128,13 @@ export default function ImagePickerExample({ navigation }) {
 				style={{ marginBottom: 30 }}
 				showsVerticalScrollIndicator={false}
 				showsHorizontalScrollIndicator={false}>
+					{loading === true ? (
+					<View>
+							<Text>Please Wait. System Processing</Text>
+							<ActivityIndicator size="large" color="blue" />
+					</View>
+			) : null}
+
 				{image && (
 					<Image
 						//@ts-ignore
