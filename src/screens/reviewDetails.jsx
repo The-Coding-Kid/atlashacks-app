@@ -67,7 +67,7 @@ const reviewDetails = ({ navigation }) => {
 									setImages(item.image);
 								}}>
 								{/*@ts-ignore*/}
-								<Image style={styles.imageStyle} source={{ uri: item.uri }} />
+								<Image style={styles.imageStyle} source={{ uri: item.file_name }} />
 							</TouchableOpacity>
 						);
 					}}
@@ -90,7 +90,6 @@ const styles = StyleSheet.create({
 		height: 240,
 		margin: 7.5,
 		borderRadius: 20,
-		
 	},
 	imageTitle: {
 		marginLeft: 120,
@@ -102,17 +101,17 @@ const styles = StyleSheet.create({
 	reviewStyle: {
 		marginTop: 30,
 		height: 70,
-		backgroundColor: '#1e56a9',		
+		backgroundColor: '#1e56a9',
 		alignItems: 'center',
 		shadowColor: 'black',
-    shadowOffset: {
-      width: 1000000,
-      height: 1000000
-    },
-    shadowOpacity: 0.777777,
-    shadowRadius: 10,
-    elevation: 6,
-		flexDirection: 'row'
+		shadowOffset: {
+			width: 1000000,
+			height: 1000000,
+		},
+		shadowOpacity: 0.777777,
+		shadowRadius: 10,
+		elevation: 6,
+		flexDirection: 'row',
 	},
 	centeredView: {
 		flex: 1,
@@ -153,10 +152,10 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 		textAlign: 'center',
 	},
-	menu:{
+	menu: {
 		position: 'absolute',
-		marginLeft: 0
-	}
+		marginLeft: 0,
+	},
 });
 
 export default reviewDetails;
