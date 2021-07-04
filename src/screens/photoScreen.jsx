@@ -258,6 +258,14 @@ export default function ImagePickerExample({ navigation }) {
 									<Ionicons name="star-half" size={30} color="#ffd944" />
 								</View>
 							) : null}
+							<Flatlist 
+								data={containted}
+								renderItem ={({item}) => {
+									return(
+										<Text>{item}</Text>
+									)
+								}}
+							/>
 							<TouchableOpacity
 								style={[styles.button2, styles.buttonClose]}
 								onPress={() => {
