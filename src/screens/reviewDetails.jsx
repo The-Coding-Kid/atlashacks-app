@@ -20,13 +20,19 @@ const reviewDetails = ({ navigation }) => {
 	//   { type: 'Image #4', image: require('../../assets/food.jpg') }]
 	const [modalVisible, setModalVisible] = useState(false);
 	const [images, setImages] = useState(null);
-	const [data, setData] = useState([]);
+	const [data, setData] = useState(null);
 
 	useEffect(() => {
-		axios
-			.get('http://192.168.86.234:5000/all')
-			.then((res) => setData(res.data))
-			.catch((err) => console.error(err));
+		const fetchData = async () => {
+			await axios
+				.get('http://192.168.86.234:5000/all')
+				.then((res) => {
+					setData(res.data);
+					console.log(res.data);
+				})
+				.catch((err) => console.error(err));
+		};
+		fetchData();
 	}, []);
 
 	return (
@@ -49,23 +55,23 @@ const reviewDetails = ({ navigation }) => {
 					</View>
 				</Modal>
 				<FlatList
-				showsVerticalScrollIndicator={true}
-				keyExtractor={(data) => data.id}
-				data={data}
-				renderItem={({ item }) => {
-				// item === {name: 'Friend #1' ...} */}
-				return ( 
-				<TouchableOpacity 
-				onPress={() => { 
-				setModalVisible(true); 
-				setImages(item.image); 
-				}}> 
-				{/*@ts-ignore*/}
-				<Image style={styles.imageStyle} source={{uri: item.file_name}} /> 
-				</TouchableOpacity> 
-				); 
-				}} 
-				/> 
+					showsVerticalScrollIndicator={true}
+					keyExtractor={(data) => data.id}
+					data={data}
+					renderItem={({ item }) => {
+						// item === {name: 'Friend #1' ...} */}
+						return (
+							<TouchableOpacity
+								onPress={() => {
+									setModalVisible(true);
+									setImages(item.image);
+								}}>
+								{/*@ts-ignore*/}
+								<Image style={styles.imageStyle} source={{ uri: item.uri }} />
+							</TouchableOpacity>
+						);
+					}}
+				/>
 			</View>
 		</SafeAreaView>
 	);
