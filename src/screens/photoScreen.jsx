@@ -13,6 +13,7 @@ import {
 	Modal,
 	StyleSheet,
 	ActivityIndicator,
+	FlatList,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -258,12 +259,10 @@ export default function ImagePickerExample({ navigation }) {
 									<Ionicons name="star-half" size={30} color="#ffd944" />
 								</View>
 							) : null}
-							<Flatlist 
+							<FlatList
 								data={containted}
-								renderItem ={({item}) => {
-									return(
-										<Text>{item}</Text>
-									)
+								renderItem={({ item }) => {
+									return <Text>{item}</Text>;
 								}}
 							/>
 							<TouchableOpacity
@@ -375,7 +374,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		elevation: 2,
 		alignItems: 'center',
-		marginTop: 300,
+		marginTop: 280,
 	},
 	buttonOpen: {
 		backgroundColor: '#F194FF',
