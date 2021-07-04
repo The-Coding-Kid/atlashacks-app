@@ -19,7 +19,7 @@ const reviewDetails = ({ navigation }) => {
 	//   { type: 'Image #4', image: require('../../assets/food.jpg') }]
 	const [modalVisible, setModalVisible] = useState(false);
 	const [images, setImages] = useState(null);
-	const [data, setData] = useState(null);
+	const [data, setData] = useState([]);
 
 	useEffect(() => {
 		axios
@@ -46,24 +46,24 @@ const reviewDetails = ({ navigation }) => {
 						</TouchableOpacity>
 					</View>
 				</Modal>
-				{/* <FlatList */}
-				{/* showsVerticalScrollIndicator={true} */}
-				{/* keyExtractor={(friend) => friend.type} */}
-				{/* data={friends} */}
-				{/* renderItem={({ item }) => { */}
-				{/* // item === {name: 'Friend #1' ...} */}
-				{/* return ( */}
-				{/* <TouchableOpacity */}
-				{/* onPress={() => { */}
-				{/* setModalVisible(true); */}
-				{/* setImages(item.image); */}
-				{/* }}> */}
+				<FlatList
+				showsVerticalScrollIndicator={true}
+				keyExtractor={(data) => data.id}
+				data={data}
+				renderItem={({ item }) => {
+				// item === {name: 'Friend #1' ...} */}
+				return ( 
+				<TouchableOpacity 
+				onPress={() => { 
+				setModalVisible(true); 
+				setImages(item.image); 
+				}}> 
 				{/*@ts-ignore*/}
-				{/* <Image style={styles.imageStyle} source={item.image} /> */}
-				{/* </TouchableOpacity> */}
-				{/* ); */}
-				{/* }} */}
-				{/* /> */}
+				<Image style={styles.imageStyle} source={{uri: item.file_name}} /> 
+				</TouchableOpacity> 
+				); 
+				}} 
+				/> 
 			</View>
 		</SafeAreaView>
 	);
