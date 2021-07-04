@@ -130,7 +130,15 @@ export default function ImagePickerExample({ navigation }) {
 						marginBottom: 10,
 					}}
 					onPress={pickImage}>
-					<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Choose Photo</Text>
+					<Text
+						style={{
+							color: 'white',
+							fontSize: 30,
+							fontWeight: 'bold',
+							fontFamily: 'Roboto-Condensed',
+						}}>
+						Choose Photo
+					</Text>
 				</TouchableOpacity>
 
 				<View style={styles.centeredView}>
