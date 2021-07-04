@@ -12,6 +12,7 @@ import {
 	SafeAreaView,
 	Modal,
 	StyleSheet,
+	ActivityIndicator,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -30,6 +31,7 @@ export default function ImagePickerExample({ navigation }) {
 	const [stars, setStars] = useState(null);
 	const [modalVisible2, setModalVisible2] = useState(false);
 	const [uri, setUri] = useState(null);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		(async () => {
@@ -90,10 +92,12 @@ export default function ImagePickerExample({ navigation }) {
 			name: file_name,
 			type: 'image/jpeg',
 		});
+		setLoading(true);
 		try {
 			const response = await axios.post(`http://192.168.86.234:5000/upload-image`, formData, {
 				headers: { 'Content-Type': 'multipart/form-data' },
 			});
+			setLoading(false);
 			console.log(response.data);
 			setContainted(response.data[0]);
 			setNotContainted(response.data[1]);
@@ -283,6 +287,12 @@ export default function ImagePickerExample({ navigation }) {
 					onPress={uploadPhoto}>
 					<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Upload It</Text>
 				</TouchableOpacity>
+				{loading === true ? (
+					<View>
+						<Text>Please Wait. System Processing</Text>
+						<ActivityIndicator size="large" color="blue" />
+					</View>
+				) : null}
 				{/* <Image source={require('../../assets/carrot2.png')} /> */}
 			</ScrollView>
 		</SafeAreaView>
