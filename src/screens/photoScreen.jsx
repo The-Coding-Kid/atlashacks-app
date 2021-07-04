@@ -28,7 +28,7 @@ export default function ImagePickerExample({ navigation }) {
 	const [cameraRef, setCameraRef] = useState(null);
 	const [containted, setContainted] = useState([]);
 	const [notcontainted, setNotContainted] = useState([]);
-	const [stars, setStars] = useState(null);
+	const [star, setStar] = useState(null);
 	const [modalVisible2, setModalVisible2] = useState(false);
 	const [uri, setUri] = useState(null);
 	const [loading, setLoading] = useState(false);
@@ -97,23 +97,28 @@ export default function ImagePickerExample({ navigation }) {
 			setLoading(false);
 			setContainted(response.data[0]);
 			setNotContainted(response.data[1]);
-			setStars(response.data[2]);
+			setStar(response.data[2]);
 		} catch (err) {
 			console.error(err.response.data);
 		}
-		const post_to_database = async () => {
-			try {
-				await axios.post(`http://192.168.86.234:5000/store`, {
-					uri: image.uri,
-					stars: stars,
-				});
-			} catch (err) {
-				console.error(err.response.data);
-			}
-			setLoading(false);
-			setModalVisible2(true);
-			setImages(item.image);
-		};
+	};
+
+	const post_to_database = async () => {
+		try {
+			await axios.post(`http://192.168.86.234:5000/store`, {
+				uri: image.uri,
+				stars: star,
+			});
+		} catch (err) {
+			console.error(err.response.data);
+		}
+		setLoading(false);
+		setModalVisible2(true);
+		setImages(item.image);
+	};
+
+	const post_and_upload = async () => {
+		await uploadPhoto();
 		await post_to_database();
 	};
 
@@ -204,48 +209,48 @@ export default function ImagePickerExample({ navigation }) {
 						<View style={styles.centeredView}>
 							<Image style={styles.imageStyle} source={{ uri: uri }} />
 							<View style={{ marginTop: 40, marginBottom: 30 }}>
-								<Text style={{ fontSize: 30, fontWeight: 'bold' }}>Overall Rating: {stars}</Text>
+								<Text style={{ fontSize: 30, fontWeight: 'bold' }}>Overall Rating: {star}</Text>
 							</View>
-							{stars === 2 ? (
+							{star === 2 ? (
 								<View style={{ flexDirection: 'row' }}>
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star" size={30} color="#ffd944" />
 								</View>
-							) : stars === 3 ? (
+							) : star === 3 ? (
 								<View style={{ flexDirection: 'row' }}>
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star" size={30} color="#ffd944" />
 								</View>
-							) : stars === 4 ? (
-								<View style={{ flexDirection: 'row' }}>
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-								</View>
-							) : stars === 5 ? (
+							) : star === 4 ? (
 								<View style={{ flexDirection: 'row' }}>
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star" size={30} color="#ffd944" />
+								</View>
+							) : star === 5 ? (
+								<View style={{ flexDirection: 'row' }}>
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
+									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star" size={30} color="#ffd944" />
 								</View>
-							) : stars === 2.5 ? (
+							) : star === 2.5 ? (
 								<View style={{ flexDirection: 'row' }}>
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star-half" size={30} color="#ffd944" />
 								</View>
-							) : stars === 3.5 ? (
+							) : star === 3.5 ? (
 								<View style={{ flexDirection: 'row' }}>
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star-half" size={30} color="#ffd944" />
 								</View>
-							) : stars === 4.5 ? (
+							) : star === 4.5 ? (
 								<View style={{ flexDirection: 'row' }}>
 									<Ionicons name="star" size={30} color="#ffd944" />
 									<Ionicons name="star" size={30} color="#ffd944" />
@@ -282,7 +287,7 @@ export default function ImagePickerExample({ navigation }) {
 						marginHorizontal: 36,
 						marginTop: 35,
 					}}
-					onPress={uploadPhoto}>
+					onPress={post_and_upload}>
 					<Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Upload It</Text>
 				</TouchableOpacity>
 				{loading === true ? (

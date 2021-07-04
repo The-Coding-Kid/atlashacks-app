@@ -28,6 +28,7 @@ const reviewDetails = ({ navigation }) => {
 			await axios
 				.get('http://192.168.86.234:5000/all')
 				.then((res) => {
+					console.log(res.data);
 					setData(res.data);
 				})
 				.catch((err) => console.error(err));
@@ -52,53 +53,53 @@ const reviewDetails = ({ navigation }) => {
 						<Image style={styles.imageStyle} source={{ uri: images }} />
 						<Text></Text>
 						{star === 2 ? (
-								<View style={{ flexDirection: 'row' }}>
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-								</View>
-							) : star === 3 ? (
-								<View style={{ flexDirection: 'row' }}>
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-								</View>
-							) : star === 4 ? (
-								<View style={{ flexDirection: 'row' }}>
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-								</View>
-							) : star === 5 ? (
-								<View style={{ flexDirection: 'row' }}>
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-								</View>
-							) : star === 2.5 ? (
-								<View style={{ flexDirection: 'row' }}>
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star-half" size={30} color="#ffd944" />
-								</View>
-							) : star === 3.5 ? (
-								<View style={{ flexDirection: 'row' }}>
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star-half" size={30} color="#ffd944" />
-								</View>
-							) : star === 4.5 ? (
-								<View style={{ flexDirection: 'row' }}>
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star" size={30} color="#ffd944" />
-									<Ionicons name="star-half" size={30} color="#ffd944" />
-								</View>
-							) : null}
+							<View style={{ flexDirection: 'row' }}>
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+							</View>
+						) : star === 3 ? (
+							<View style={{ flexDirection: 'row' }}>
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+							</View>
+						) : star === 4 ? (
+							<View style={{ flexDirection: 'row' }}>
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+							</View>
+						) : star === 5 ? (
+							<View style={{ flexDirection: 'row' }}>
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+							</View>
+						) : star === 2.5 ? (
+							<View style={{ flexDirection: 'row' }}>
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star-half" size={30} color="#ffd944" />
+							</View>
+						) : star === 3.5 ? (
+							<View style={{ flexDirection: 'row' }}>
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star-half" size={30} color="#ffd944" />
+							</View>
+						) : star === 4.5 ? (
+							<View style={{ flexDirection: 'row' }}>
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star" size={30} color="#ffd944" />
+								<Ionicons name="star-half" size={30} color="#ffd944" />
+							</View>
+						) : null}
 						<TouchableOpacity
 							style={[styles.button, styles.buttonClose]}
 							onPress={() => {
@@ -110,7 +111,7 @@ const reviewDetails = ({ navigation }) => {
 				</Modal>
 				<FlatList
 					showsVerticalScrollIndicator={true}
-					keyExtractor={(data) => (data.file_name)*(data.id)}
+					keyExtractor={(data) => data.file_name * data.id}
 					data={data}
 					renderItem={({ item }) => {
 						// item === {name: 'Friend #1' ...} */}
