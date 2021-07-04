@@ -101,16 +101,20 @@ export default function ImagePickerExample({ navigation }) {
 		} catch (err) {
 			console.error(err.response.data);
 		}
-		try {
-			const response = await axios.post(`http://192.168.86.234:5000/store`, {
-				uri: image.uri,
-				stars: stars,
-			});
-		} catch (err) {
-			console.error(err.response.data);
-		}
-		setModalVisible2(true);
-		setImages(item.image);
+		const post_to_database = async () => {
+			try {
+				await axios.post(`http://192.168.86.234:5000/store`, {
+					uri: image.uri,
+					stars: stars,
+				});
+			} catch (err) {
+				console.error(err.response.data);
+			}
+			setLoading(false);
+			setModalVisible2(true);
+			setImages(item.image);
+		};
+		await post_to_database();
 	};
 
 	return (
