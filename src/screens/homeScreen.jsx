@@ -32,7 +32,7 @@ export default function homeScreen({ navigation }) {
 				</View>
 				<TouchableOpacity onPress={() => navigation.navigate('Upload')} style={styles.Upload}>
 					<Text style={styles.UploadText}>Upload Photo    </Text>
-					<Ionicons name="camera-outline" size={40} color="black"/>
+					<Ionicons name="camera-outline" size={40} color="white"/>
 					{/* <Text style={styles.UploadText}></Text> */}
 				</TouchableOpacity>
 
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 		marginHorizontal: 15,
 		height: 70,
-		backgroundColor: '#fff',
+		backgroundColor: '#1e56a9',
 		// // borderRadius: 25,
 		// borderWidth: 1,
 		alignItems: 'center',
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
 	UploadText: {
 		alignSelf: 'center',
 		fontSize: 25,
-		color: '#165e54',
+		color: '#fff',
 		fontFamily: 'Roboto-Condensed-Bold'
 	},
 	HomeText: {
@@ -111,9 +111,16 @@ const styles = StyleSheet.create({
 	reviewStyle: {
 		marginBottom: 15,
 		marginHorizontal: 15,
-		backgroundColor: '#85cbca',
-		borderRadius: 25,
+		backgroundColor: '#fff',
 		alignItems: 'center',
+		shadowColor: 'black',
+    shadowOffset: {
+      width: 1000000,
+      height: 1000000
+    },
+    shadowOpacity: 0.777777,
+    shadowRadius: 10,
+    elevation: 6,
 	},
 	imageStyle: {
 		height: 240,
@@ -124,7 +131,7 @@ const styles = StyleSheet.create({
 	},
 	imageTitle: {
 		fontSize: 18,
-		color: 'white',
+		color: '#1e56a9',
 		fontFamily: 'Roboto-Condensed-Bold'
 	},
 	carrot: {
