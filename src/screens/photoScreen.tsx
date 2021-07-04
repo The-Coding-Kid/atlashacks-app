@@ -63,6 +63,7 @@ export default function ImagePickerExample({ navigation }) {
 		});
 
 		if (result.cancelled === false) {
+			//@ts-ignore
 			setImage(result);
 		}
 	};
@@ -71,6 +72,7 @@ export default function ImagePickerExample({ navigation }) {
 		let formData = new FormData();
 		//@ts-ignore
 		let string = image.uri;
+		//@ts-ignore
 		setUri(image.uri);
 		//@ts-ignore
 		let file_name = ' ';
@@ -92,7 +94,7 @@ export default function ImagePickerExample({ navigation }) {
 		});
 		setLoading(true);
 		try {
-			const response = await axios.post(`http://192.168.86.234:5000/upload-image`, formData, {
+			const response = await axios.post(`${process.env.BACKEND_URL}upload-image`, formData, {
 				headers: { 'Content-Type': 'multipart/form-data' },
 			});
 			setContainted(response.data[0]);
@@ -107,13 +109,15 @@ export default function ImagePickerExample({ navigation }) {
 
 	const post_to_database = async () => {
 		try {
-			await axios.post(`http://192.168.86.234:5000/store`, {
+			await axios.post(`${process.env.BACKEND_URL}store`, {
+				//@ts-ignore
 				uri: image.uri,
 				stars: star,
 			});
 		} catch (err) {
 			console.error(err.response.data);
 		}
+		//@ts-ignore
 		setImages(item.image);
 	};
 
@@ -128,12 +132,12 @@ export default function ImagePickerExample({ navigation }) {
 				style={{ marginBottom: 30 }}
 				showsVerticalScrollIndicator={false}
 				showsHorizontalScrollIndicator={false}>
-					{loading === true ? (
+				{loading === true ? (
 					<View>
-							<Text>Please Wait. System Processing</Text>
-							<ActivityIndicator size="large" color="blue" />
+						<Text>Please Wait. System Processing</Text>
+						<ActivityIndicator size="large" color="blue" />
 					</View>
-			) : null}
+				) : null}
 
 				{image && (
 					<Image
@@ -216,7 +220,7 @@ export default function ImagePickerExample({ navigation }) {
 						<View style={styles.centeredView}>
 							<Image style={styles.imageStyle} source={{ uri: uri }} />
 							<View style={{ marginTop: 40, marginBottom: 30 }}>
-								<Text style={{ fontSize: 30, fontWeight: 'bold' }}>Overall Rating: {star}</Text>
+								<Text style={{ fontSize: 30, fontWeight: 'bold' }}>Choice Score: {star}</Text>
 							</View>
 							{star === 2 ? (
 								<View style={{ flexDirection: 'row' }}>
@@ -270,6 +274,7 @@ export default function ImagePickerExample({ navigation }) {
 							<FlatList
 								data={containted}
 								renderItem={({ item }) => {
+									//@ts-ignore
 									return <Text style={styles.list}>{item}</Text>;
 								}}
 							/>
@@ -425,13 +430,13 @@ const styles = StyleSheet.create({
 		color: 'white',
 		fontSize: 30,
 	},
-	contain:{
+	contain: {
 		alignSelf: 'flex-start',
 		marginLeft: 60,
-		fontWeight: 'bold'
-	},
-	loading:{
 		fontWeight: 'bold',
-		fontSize: 18
-	}
+	},
+	loading: {
+		fontWeight: 'bold',
+		fontSize: 18,
+	},
 });

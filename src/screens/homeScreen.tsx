@@ -26,7 +26,7 @@ export default function homeScreen({ navigation }) {
 	useEffect(() => {
 		const fetchData = async () => {
 			await axios
-				.get('http://192.168.86.234:5000/all')
+				.get(`${process.env.BACKEND_URL}all`)
 				.then((res) => {
 					setData(res.data);
 				})
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
 		marginVertical: 30,
 		justifyContent: 'center',
 		borderColor: '#c0c0c0',
+		//@ts-ignore
 		borderColor: 'black',
 		shadowColor: 'black',
 		shadowOffset: {
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
 		shadowRadius: 10,
 		elevation: 6,
 		flexDirection: 'row',
+		//@ts-ignore
 		justifyContent: 'flex-start',
 	},
 	Upload: {

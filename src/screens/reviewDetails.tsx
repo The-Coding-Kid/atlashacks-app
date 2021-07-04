@@ -26,7 +26,7 @@ const reviewDetails = ({ navigation }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			await axios
-				.get('http://192.168.86.234:5000/all')
+				.get(`${process.env.BACKEND_URL}all`)
 				.then((res) => {
 					console.log(res.data);
 					setData(res.data);
@@ -111,6 +111,7 @@ const reviewDetails = ({ navigation }) => {
 				</Modal>
 				<FlatList
 					showsVerticalScrollIndicator={true}
+					//@ts-ignore
 					keyExtractor={(data) => data.file_name * data.id}
 					data={data}
 					renderItem={({ item }) => {
