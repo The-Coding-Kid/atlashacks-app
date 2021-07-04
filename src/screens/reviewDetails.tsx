@@ -26,7 +26,7 @@ const reviewDetails = ({ navigation }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			await axios
-				.get(`${process.env.BACKEND_URL}all`)
+				.get(`http://192.168.86.27:5000/all`)
 				.then((res) => {
 					console.log(res.data);
 					setData(res.data);
