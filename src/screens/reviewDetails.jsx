@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 	View,
 	Text,
@@ -9,15 +9,24 @@ import {
 	SafeAreaView,
 	Modal,
 } from 'react-native';
+var axios = require('axios');
 
 const reviewDetails = ({ navigation }) => {
-	const friends = [  
-		{ type: 'Image #1', image: require('../../assets/lunch2.jpg') },
-		{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
-	  { type: 'Image #3', image: require('../../assets/lunch3.jpeg') },
-	  { type: 'Image #4', image: require('../../assets/food.jpg') }]
+	// const friends = [
+	// 	{ type: 'Image #1', image: require('../../assets/lunch2.jpg') },
+	// 	{ type: 'Image #2', image: require('../../assets/school_lunch_tray.jpg') },
+	//   { type: 'Image #3', image: require('../../assets/lunch3.jpeg') },
+	//   { type: 'Image #4', image: require('../../assets/food.jpg') }]
 	const [modalVisible, setModalVisible] = useState(false);
 	const [images, setImages] = useState(null);
+	const [data, setData] = useState(null);
+
+	useEffect(() => {
+		axios
+			.get('http://192.168.86.234:5000/all')
+			.then((res) => setData(res.data))
+			.catch((err) => console.error(err));
+	}, []);
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -37,25 +46,24 @@ const reviewDetails = ({ navigation }) => {
 						</TouchableOpacity>
 					</View>
 				</Modal>
-				<FlatList
-					showsVerticalScrollIndicator={true}
-					keyExtractor={(friend) => friend.type}
-					data={friends}
-					renderItem={({ item }) => {
-						// item === {name: 'Friend #1' ...}
-						return (
-							<TouchableOpacity
-								onPress={() => {
-									setModalVisible(true);
-									setImages(item.image);
-									
-								}}>
-								{/*@ts-ignore*/}
-								<Image style={styles.imageStyle} source={item.image} />
-							</TouchableOpacity>
-						);
-					}}
-				/>
+				{/* <FlatList */}
+				{/* showsVerticalScrollIndicator={true} */}
+				{/* keyExtractor={(friend) => friend.type} */}
+				{/* data={friends} */}
+				{/* renderItem={({ item }) => { */}
+				{/* // item === {name: 'Friend #1' ...} */}
+				{/* return ( */}
+				{/* <TouchableOpacity */}
+				{/* onPress={() => { */}
+				{/* setModalVisible(true); */}
+				{/* setImages(item.image); */}
+				{/* }}> */}
+				{/*@ts-ignore*/}
+				{/* <Image style={styles.imageStyle} source={item.image} /> */}
+				{/* </TouchableOpacity> */}
+				{/* ); */}
+				{/* }} */}
+				{/* /> */}
 			</View>
 		</SafeAreaView>
 	);
@@ -127,6 +135,5 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 	},
 });
-
 
 export default reviewDetails;
