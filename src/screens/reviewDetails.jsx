@@ -21,7 +21,7 @@ const reviewDetails = ({ navigation }) => {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [images, setImages] = useState(null);
 	const [data, setData] = useState(null);
-	const [start, setStar] = useState(null)
+	const [start, setStar] = useState(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -34,6 +34,11 @@ const reviewDetails = ({ navigation }) => {
 				.catch((err) => console.error(err));
 		};
 		fetchData();
+		const interval = setInterval(() => {
+			fetchData();
+		}, 10000);
+
+		return () => clearInterval(interval);
 	}, []);
 
 	return (
@@ -45,7 +50,7 @@ const reviewDetails = ({ navigation }) => {
 			<View style={styles.centeredView}>
 				<Modal animationType="slide" transparent={false} visible={modalVisible}>
 					<View style={styles.centeredView}>
-						<Image style={styles.imageStyle} source={{uri: images}} />
+						<Image style={styles.imageStyle} source={{ uri: images }} />
 						<TouchableOpacity
 							style={[styles.button, styles.buttonClose]}
 							onPress={() => {
@@ -66,7 +71,7 @@ const reviewDetails = ({ navigation }) => {
 								onPress={() => {
 									setModalVisible(true);
 									setImages(item.image);
-									setStar(item.stars)
+									setStar(item.stars);
 								}}>
 								{/*@ts-ignore*/}
 								<Image style={styles.imageStyle} source={{ uri: item.file_name }} />
