@@ -28,7 +28,7 @@ export default function homeScreen({ navigation }) {
 
 			<ScrollView>
 				<View style={styles.Home}>
-					<Ionicons name="menu" size={24} color="black" />
+					<Ionicons name="menu" size={24} color="black" style={styles.menu} />
 					<Text style={styles.HomeText}> Home</Text>
 				</View>
 				<TouchableOpacity onPress={() => navigation.navigate('Upload')} style={styles.Upload}>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 6,
 		flexDirection: 'row',
-		justifyContent: 'center'
+		justifyContent: 'flex-start'
 	},
 	Upload: {
 		marginBottom: 15,
@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		fontSize: 25,
 		color: '#1e56a9',
+		marginLeft: 120
 	},
 	reviewStyle: {
 		marginBottom: 15,
@@ -143,11 +144,8 @@ const styles = StyleSheet.create({
 		width: 200
 		
 	},
-	camera:{
-		elevation: 10,
-		position: 'absolute',
-		height: 600,
-		width: 490
+	menu:{
+		marginTop: 22
 	}
 	
 });
