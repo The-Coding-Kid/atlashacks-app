@@ -26,7 +26,7 @@ export default function homeScreen({ navigation }) {
 	useEffect(() => {
 		const fetchData = async () => {
 			await axios
-				.get('https://fresh-choices.herokuapp.com/all')
+				.get('http://192.168.86.27:5000/all')
 				.then((res) => {
 					setData(res.data);
 				})
