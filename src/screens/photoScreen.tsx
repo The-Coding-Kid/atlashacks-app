@@ -94,9 +94,13 @@ export default function ImagePickerExample({ navigation }) {
 		});
 		setLoading(true);
 		try {
-			const response = await axios.post(`http://192.168.86.27:5000/upload-image`, formData, {
-				headers: { 'Content-Type': 'multipart/form-data' },
-			});
+			const response = await axios.post(
+				`https://fresh-choices.herokuapp.com/upload-image`,
+				formData,
+				{
+					headers: { 'Content-Type': 'multipart/form-data' },
+				}
+			);
 			setContainted(response.data[0]);
 			setNotContainted(response.data[1]);
 			setStar(response.data[2]);
@@ -109,7 +113,7 @@ export default function ImagePickerExample({ navigation }) {
 
 	const post_to_database = async () => {
 		try {
-			await axios.post(`http://192.168.86.27:5000/store`, {
+			await axios.post(`https://fresh-choices.herokuapp.com/store`, {
 				//@ts-ignore
 				uri: image.uri,
 				stars: star,
